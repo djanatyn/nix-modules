@@ -12,6 +12,8 @@ in {
 
   config = mkIf cfg.enable {
     home-manager.users."${cfg.username}" = {
+      # TODO: this configuration is for AE laptop
+      # create profiles for each different tmuxp config
       home.file.".tmuxp/work.yaml".text = lib.generators.toYAML { } {
         session_name = "workin'";
         windows = [
@@ -39,6 +41,12 @@ in {
           }
         ];
       };
+
+      # flat files
+      home.file.".zshrc".text = lib.fileContents ./files/zshrc;
+      home.file.".tmux.conf".text = lib.fileContents ./files/tmux.conf;
+
+      # TODO: configuration directories (e.g. ~/.doom.d)
     };
   };
 }
