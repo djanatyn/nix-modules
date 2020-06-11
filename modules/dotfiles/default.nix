@@ -42,11 +42,14 @@ in {
         ];
       };
 
-      # flat files
+      # zsh
       home.file.".zshrc".text = lib.fileContents ./files/zshrc;
+
+      # tmux
       home.file.".tmux.conf".text = lib.fileContents ./files/tmux.conf;
 
-      # TODO: configuration directories (e.g. ~/.doom.d)
+      # emacs
+      home.file.".doom.d".source = ./files/doom.d;
     };
   };
 }
