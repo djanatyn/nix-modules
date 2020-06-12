@@ -7,8 +7,21 @@ let
     ref = "master";
   };
 in {
-  imports =
-    [ /etc/nixos/hardware-configuration.nix (import "${home-manager}/nixos") ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    (import "${home-manager}/nixos")
+    ./modules/djanatyn
+    ./modules/monitoring
+    ./modules/dotfiles
+  ];
+
+  # prometheus + grafana
+  # TODO: rename (flowercluster)
+  flowercluster.services.monitoring.enable = true;
+
+  # dotfiles
+  dotfiles.enable = true;
+  dotfiles.username = "djanatyn";
 
   # (don't update unless you know what you're doing)
   system.stateVersion = "19.09";
@@ -16,6 +29,7 @@ in {
   # nix configuration
   # =================
   nix.package = pkgs.nix;
+
   services.lorri.enable = true;
 
   # nixpkgs configuration
@@ -32,16 +46,9 @@ in {
   users.users.djanatyn = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
-    shell = pkgs.zsh;
   };
 
   home-manager.users.djanatyn = {
-    programs.git = {
-      enable = true;
-      userName = "djanatyn";
-      userEmail = "djanatyn@gmail.com";
-    };
-
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
