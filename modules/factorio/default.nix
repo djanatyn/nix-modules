@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 with lib;
 let cfg = config.flowercluster.services.factorio;
 in {
@@ -8,6 +8,7 @@ in {
 
   config = mkIf cfg.enable {
     services.factorio.enable = true;
+    services.factorio.package = pkgs.factorio-headless-experimental;
 
     services.factorio.password =
       lib.fileContents /var/src/secrets/factorio/password;
