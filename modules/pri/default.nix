@@ -8,7 +8,7 @@ in {
   };
 
   config = {
-    users.users.pri = {
+    users.users."${cfg.username}" = {
       name = "Pritika Dasgupta";
       isNormalUser = true;
       extraGroups = cfg.groups;
@@ -19,7 +19,7 @@ in {
       ];
     };
 
-    home-manager.users.pri = {
+    home-manager.users."${cfg.username}" = {
       programs.git = {
         enable = true;
         userName = "pri";
