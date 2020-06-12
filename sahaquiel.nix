@@ -21,9 +21,6 @@ in {
   # system state is from 18.08
   system.stateVersion = "18.08";
 
-  # latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   # flowercluster services
   # ======================
   flowercluster.services.sourcehut.enable = true;
