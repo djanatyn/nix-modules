@@ -23,6 +23,8 @@ in {
   dotfiles.enable = true;
   dotfiles.username = "djanatyn";
 
+  djanatyn.username = "djanatyn";
+  djanatyn.groups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
   # (don't update unless you know what you're doing)
   system.stateVersion = "19.09";
 
@@ -40,19 +42,6 @@ in {
       # required for lutris package
       "p7zip-16.02"
     ];
-  };
-
-  # user account
-  users.users.djanatyn = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
-  };
-
-  home-manager.users.djanatyn = {
-    services.gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-    };
   };
 
   # use the latest kernel available
