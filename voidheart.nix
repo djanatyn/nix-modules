@@ -13,6 +13,7 @@ in {
     ./modules/djanatyn
     ./modules/monitoring
     ./modules/dotfiles
+    ./modules/pri
   ];
 
   # prometheus + grafana
@@ -25,6 +26,10 @@ in {
 
   djanatyn.username = "djanatyn";
   djanatyn.groups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
+
+  pri.username = "pripripripripri";
+  pri.groups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
+
   # (don't update unless you know what you're doing)
   system.stateVersion = "19.09";
 
