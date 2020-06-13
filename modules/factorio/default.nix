@@ -5,9 +5,10 @@ let
   factorio-latest = pkgs.factorio-headless-experimental.overrideAttrs
     (old: rec {
       version = "0.18.31";
+      name = "factorio_headless_linux64-0.18.31.tar.xz";
 
       src = pkgs.fetchurl {
-        name = "factorio_headless_linux64-0.18.31.tar.xz";
+        inherit name;
         url = "https://www.factorio.com/get-download/0.18.31/headless/linux64";
         sha256 = "17jslya538k910ppgfshzhxzbaxlf92ldbbcy1bhjyarmhwyk0i8";
       };
