@@ -30,9 +30,8 @@
 ;; fix ssh inside tmux
 (defun fix-ssh ()
   (interactive)
-  (let ((cmd "tmux show-environment | grep -oP '(?<=^SSH_AUTH_SOCK=).+$'")
-        (strip (lambda (t) replace-regexp-in-string "\n\\'" "" t)))
-    (setenv "SSH_AUTH_SOCK" (apply strip (shell-command-to-string cmd)))))
+  (setenv "SSH_AUTH_SOCK"   (s-chomp (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
+(fix-ssh)
 
 ;; elfeed
 (setq rmh-elfeed-org-files (list "~/.feeds.org"))
