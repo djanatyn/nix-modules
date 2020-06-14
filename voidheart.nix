@@ -12,23 +12,14 @@ in {
     (import "${home-manager}/nixos")
     ./modules/djanatyn
     ./modules/monitoring
-    ./modules/dotfiles
-    ./modules/pri
   ];
 
   # prometheus + grafana
   # TODO: rename (flowercluster)
   flowercluster.services.monitoring.enable = true;
 
-  # dotfiles
-  dotfiles.enable = true;
-  dotfiles.username = "djanatyn";
-
-  djanatyn.username = "djanatyn";
-  djanatyn.groups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
-
-  pri.username = "pripripripripri";
-  pri.groups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
+  # enable gpg-agent on voidheart
+  djanatyn.enableGpgAgent = true;
 
   # (don't update unless you know what you're doing)
   system.stateVersion = "19.09";
@@ -36,7 +27,6 @@ in {
   # nix configuration
   # =================
   nix.package = pkgs.nix;
-
   services.lorri.enable = true;
 
   # nixpkgs configuration

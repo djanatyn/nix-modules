@@ -3,28 +3,83 @@ with lib;
 let cfg = config.djanatyn;
 in {
   options = {
-    djanatyn.groups = mkOption { type = types.listOf types.str; };
-    djanatyn.username = mkOption { type = types.str; };
+    djanatyn.groups = mkOption {
+      type = types.listOf types.str;
+      default = [ "wheel" "networkmanager" "docker" "video" "audio" ];
+    };
+
+    djanatyn.username = mkOption {
+      type = types.str;
+      default = "djanatyn";
+    };
+
+    djanatyn.email = mkOption {
+      type = types.str;
+      default = "djanatyn@gmail.com";
+    };
+
+    djanatyn.enableGpgAgent = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = {
-    users.users.djanatyn = {
-      name = "Jonathan Strickland";
+    users.users."${cfg.username}" = {
       isNormalUser = true;
       extraGroups = cfg.groups;
+      name = cfg.username;
       shell = pkgs.zsh;
-
-      openssh.authorizedKeys.keys = [
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFQPTKrT397qtitl0hHkl3HysPfnpEm/WmO9f4dC4kLkrHIgs2t9Yvd6z+8C/hufW+e0cVug3sb6xHWFI78+/eCSRQpPWVsE3e6/U5R/EGJqylPLEa/SmB4hB6LpsCnJkeHnD/sVBz/EjFD29wifLFq0Y5keMdxbvUMjkGrep0CD1guYseFJOdFpLF3A5GAnnP2CHgvOT7/Pd2mym5f2Mxp17SF1iYAsx9xId5o6YbmKldz3BN51N+9CROSg9QWuSNCvA7qjflBIPtnBVZFvIN3U56OECZrv9ZY4dY2jrsUGvnGiyBkkdxw4+iR9g5kjx9jPnqZJGSEjWOYSl+2cEQGvvoSF8jPiH8yLEfC+CyFrb5FMbdXitiQz3r3Xy+oLhj8ULhnDdWZpRaJYTqhdS12R9RCoUQyP7tlyMawMxsiCUPH/wcaGInzpeSLZ5BSzVFhhMJ17TX+OpvIhWlmvpPuN0opmfaNGhVdBGFTNDfWt9jjs/OHm6RpVXacfeflP62xZQBUf3Hcat2JOqj182umjjZhBPDCJscfv52sdfkiqwWIc/GwdmKt5HqU+dX7lCFJ1OGF2ymnGEnkUwW+35qX8g2P+Vc4s28MmaO5M1R5UsMFnhtFbLdfLFKn2PEvepvIqyYFMziPzEBya4zBUch/9sd6UN3DV+rA/JB/rBApw== djanatyn@nixos"
-        "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIOiCqSWnlyk3Efun+zeqeR9afQ3gwYV0QF2l9Us15F8BnNkEqZMvVYQipZUJKwyV4P8X7yJP+2G/KGVhW5kG+4= flowercluster"
-      ];
     };
 
-    home-manager.users.djanatyn = {
+    home-manager.users."${cfg.username}" = {
+      # zsh
+      home.file.".zshrc".text = lib.fileContents ./files/zshrc;
+
+      # tmux
+      home.file.".tmux.conf".text = lib.fileContents ./files/tmux.conf;
+
+      # emacs
+      home.file.".doom.d".source = ./files/doom.d;
+
+      services.gpg-agent = {
+        enable = cfg.enableGpgAgent;
+        enableSshSupport = true;
+      };
+
       programs.git = {
         enable = true;
-        userName = "djanatyn";
-        userEmail = "djanatyn@gmail.com";
+        userName = cfg.username;
+        userEmail = cfg.email;
+      };
+
+      # work tmuxp
+      home.file.".tmuxp/work.yaml".text = lib.generators.toYAML { } {
+        session_name = "workin'";
+        windows = [
+          {
+            window_name = "nixpkgs";
+            start_directory = "~/.nix-defexpr/channels_root/nixpkgs";
+            panes = [{
+              shell_command = [ "bat ~/.nixpkgs/darwin-configuration.nix" ];
+            }];
+          }
+          {
+            window_name = "aeo-nix";
+            start_directory = "~/repos/aeo-nix";
+            panes = [ "blank" ];
+          }
+          {
+            window_name = "ansible-inventory";
+            start_directory = "~/repos/ansible-inventory";
+            panes = [ "blank" ];
+          }
+          {
+            window_name = "ansible-playbooks";
+            start_directory = "~/repos/ansible-playbooks";
+            panes = [ "blank" ];
+          }
+        ];
       };
     };
   };
