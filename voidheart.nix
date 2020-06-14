@@ -251,6 +251,7 @@ in {
         libretro.dosbox
         libretro.desmume
         libretro.mupen64plus
+        libretro.parallel-n64
         libretro.nestopia
         libretro.snes9x
         libretro.dolphin
