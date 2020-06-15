@@ -26,11 +26,13 @@ in {
 
   config = {
     users.users."${cfg.username}" = {
-      isNormalUser = true;
-      extraGroups = cfg.groups;
       name = cfg.username;
       shell = pkgs.zsh;
-    };
+    } // (if (pkgs.stdenv.system != "x86_64-darwin") then {
+      isNormalUser = true;
+      extraGroups = cfg.groups;
+    } else
+      { });
 
     home-manager.users."${cfg.username}" = {
       # zsh

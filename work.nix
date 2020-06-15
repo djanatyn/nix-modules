@@ -8,24 +8,13 @@ let
 in {
   imports = [
     (import "${home-manager}/nix-darwin")
-    ./modules/dotfiles
     ./modules/macos
+    ./modules/djanatyn
   ];
 
-  users.users.stricklanj = { name = "Jonathan Strickland"; };
-  home-manager.users.stricklanj = {
-    programs.git = {
-      enable = true;
-      userName = "stricklanj";
-      userEmail = "stricklanj@ae.com";
-    };
-  };
-
-  # dotfiles module
-  # ===============
-  dotfiles.enable = true;
-  dotfiles.username = "stricklanj";
   macos.username = "stricklanj";
+  djanatyn.username = "stricklanj";
+  djanatyn.email = "djanatyn@gmail.com";
 
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
