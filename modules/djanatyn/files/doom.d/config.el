@@ -30,7 +30,7 @@
 ;; fix ssh inside tmux
 (defun fix-ssh ()
   (interactive)
-  (setenv "SSH_AUTH_SOCK"   (s-chomp (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
+  (setenv "SSH_AUTH_SOCK" (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
 (fix-ssh)
 
 ;; elfeed
