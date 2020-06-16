@@ -19,6 +19,9 @@ in {
 
         source-url = "https://git.sr.ht/~sircmpwn/shrt";
         secret-key = lib.fileContents /var/src/secrets/sourcehut/secret-key;
+
+        network-key =
+          lib.fileContents /var/src/secrets/sourcehut/network-key/private;
       };
 
       webhooks = {
