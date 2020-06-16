@@ -8,8 +8,8 @@
 (setq doom-line-numbers-style 'relative)
 
 ;; theming
-(require 'leuven-theme)
-(setq doom-theme 'leuven)
+;; (require 'leuven-theme)
+(setq doom-theme 'doom-one)
 
 ;; use terminus font
 ;; (setq doom-font "xft:-xos4-Terminess Powerline-normal-normal-normal-*-16-*-*-*-c-80-iso10646-1")
