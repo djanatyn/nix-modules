@@ -140,6 +140,8 @@ in {
 
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "djanatyn" ];
 
   environment.systemPackages = with pkgs; [
     # network
