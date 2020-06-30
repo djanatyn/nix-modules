@@ -15,6 +15,7 @@ in {
     <modules/sourcehut>
     <modules/factorio>
     <modules/djanatyn>
+    <modules/pri>
     (import "${home-manager}/nixos")
   ];
 
