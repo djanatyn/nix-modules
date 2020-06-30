@@ -6,6 +6,11 @@ let
     rev = "8bbefa77f7e95c80005350aeac6fe425ce47c288";
     ref = "master";
   };
+  upstream = import (builtins.fetchGit {
+    url = "https://github.com/NixOS/nixpkgs";
+    rev = "e912fb83d2155a393e7146da98cda0e455a80fb6";
+    ref = "refs/head/master";
+  }) { config = { allowUnfree = true; }; };
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -269,7 +274,7 @@ in {
     })
     lutris
     (pkgs.wine.override { wineBuild = "wineWow"; })
-    steam
+    upstream.pkgs.steam
     lutris
     sgtpuzzles
     multimc
