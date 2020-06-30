@@ -60,6 +60,14 @@ in {
   boot.kernelModules = [ "kvm-amd" "kvm" ];
   boot.extraModulePackages = with pkgs; [ linuxPackages_latest.v4l2loopback ];
 
+  boot.kernelParams = [
+    "amdgpu.noretry=0"
+    "amdgpu.gpu_recovery=1"
+    "amdgpu.lockup_timeout=1000"
+    "amdgpu.gttsize=8192"
+    "amdgpu.ppfeaturemask=0xfffd3fff"
+  ];
+
   # boot options
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
