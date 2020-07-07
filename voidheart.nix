@@ -227,7 +227,7 @@ in {
     ansible-lint
 
     # chat
-    discord-ptb
+    discord
     spectral
 
     # torrent
