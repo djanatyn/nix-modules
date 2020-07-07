@@ -283,6 +283,10 @@ in {
         libretro.dolphin
         libretro.prboom
         libretro.vba-m
+        libretro.mame
+        libretro.mame2000
+        libretro.mame2003-plus
+        libretro.mame2010
       ];
     })
     lutris
