@@ -284,9 +284,10 @@ in {
         libretro.prboom
         libretro.vba-m
         libretro.mame
-        libretro.mame2000
-        libretro.mame2003-plus
         libretro.mame2010
+        libretro.mame2016
+        libretro.fbalpha2012
+        libretro.mgba
       ];
     })
     lutris
