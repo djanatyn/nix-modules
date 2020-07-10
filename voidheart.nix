@@ -274,20 +274,14 @@ in {
     runelite
     (retroarch.override {
       cores = [
-        libretro.dosbox
-        libretro.desmume
         libretro.mupen64plus
         libretro.parallel-n64
-        libretro.nestopia
+        libretro.fceumm
         libretro.snes9x
         libretro.dolphin
-        libretro.prboom
         libretro.vba-m
-        libretro.mame
-        libretro.mame2010
         libretro.mame2016
         libretro.fbalpha2012
-        libretro.mgba
       ];
     })
     lutris
