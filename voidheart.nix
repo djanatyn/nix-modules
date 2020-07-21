@@ -11,6 +11,11 @@ let
     rev = "e912fb83d2155a393e7146da98cda0e455a80fb6";
     ref = "refs/head/master";
   }) { config = { allowUnfree = true; }; };
+  slippi = pkgs.callPackage (import (builtins.fetchGit {
+    url = "https://github.com/djanatyn/Ishiiruka";
+    rev = "7cc50174b95ac992643520f820dd15fa12b9bbb0";
+    ref = "slippi";
+  })) { };
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -271,6 +276,7 @@ in {
     sshuttle
 
     # games
+    slippi
     runelite
     (retroarch.override {
       cores = [
