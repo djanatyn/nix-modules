@@ -13,7 +13,7 @@ let
   }) { config = { allowUnfree = true; }; };
   slippi = pkgs.callPackage (import (builtins.fetchGit {
     url = "https://github.com/djanatyn/Ishiiruka";
-    rev = "7cc50174b95ac992643520f820dd15fa12b9bbb0";
+    rev = "5be0ab9126453235d9acfdeb48e567f965f10aea";
     ref = "slippi";
   })) { };
 in {
