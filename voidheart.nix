@@ -11,10 +11,10 @@ let
     rev = "e912fb83d2155a393e7146da98cda0e455a80fb6";
     ref = "refs/head/master";
   }) { config = { allowUnfree = true; }; };
-  slippi = pkgs.callPackage (import (builtins.fetchGit {
+  slippi = (import (builtins.fetchGit {
     url = "https://github.com/djanatyn/Ishiiruka";
-    rev = "c518f1ff7c806bfc2f7aa18ebf25c08a5c72825f";
-    ref = "dump_to_file";
+    rev = "6edefd33c90c6d6767b175c476c891cf27afa3e3";
+    ref = "feature/nixos-support";
   })) { };
 in {
   imports = [
@@ -276,7 +276,8 @@ in {
     sshuttle
 
     # games
-    slippi
+    slippi.netplay
+    slippi.playback
     runelite
     (retroarch.override {
       cores = [
