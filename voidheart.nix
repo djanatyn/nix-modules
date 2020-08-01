@@ -1,25 +1,22 @@
-{ config, lib, pkgs, options, ... }:
-with lib;
+{ config, ... }:
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "8bbefa77f7e95c80005350aeac6fe425ce47c288";
-    ref = "master";
+  sources = import ./nix/sources.nix;
+  overlay = _: pkgs: { slippi = import sources.slippi { }; };
+
+  pkgs = import sources.nixpkgs {
+    overlays = [ overlay ];
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        # required for lutris package
+        "p7zip-16.02"
+      ];
+    };
   };
-  upstream = import (builtins.fetchGit {
-    url = "https://github.com/NixOS/nixpkgs";
-    rev = "e912fb83d2155a393e7146da98cda0e455a80fb6";
-    ref = "refs/head/master";
-  }) { config = { allowUnfree = true; }; };
-  slippi = (import (builtins.fetchGit {
-    url = "https://github.com/djanatyn/Ishiiruka";
-    rev = "6edefd33c90c6d6767b175c476c891cf27afa3e3";
-    ref = "feature/nixos-support";
-  })) { };
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    (import "${home-manager}/nixos")
+    (import "${sources.home-manager}/nixos")
     ./modules/djanatyn
     ./modules/pri
     ./modules/monitoring
@@ -50,18 +47,7 @@ in {
 
   # nix configuration
   # =================
-  nix.package = pkgs.nix;
   services.lorri.enable = true;
-
-  # nixpkgs configuration
-  # =====================
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      # required for lutris package
-      "p7zip-16.02"
-    ];
-  };
 
   # use the latest kernel available
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -292,8 +278,8 @@ in {
       ];
     })
     lutris
-    (pkgs.wine.override { wineBuild = "wineWow"; })
-    upstream.pkgs.steam
+    (wine.override { wineBuild = "wineWow"; })
+    steam
     lutris
     sgtpuzzles
     multimc
