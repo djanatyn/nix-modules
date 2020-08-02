@@ -5,10 +5,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "dbf6b2d2abe0b9966d657f301ea32e4d5364b030",
-        "sha256": "0bdgaqg4iykhm3rsj1gy2q2gfk01mi4hbahlqhgr5rc5yqm79y78",
+        "rev": "152769aed96d4d6f005ab40daf03ec4f5102c763",
+        "sha256": "10svwspmsf46rijzsh0h9nmz1mq2998wcml8yp36mwksgi8695pc",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/dbf6b2d2abe0b9966d657f301ea32e4d5364b030.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/152769aed96d4d6f005ab40daf03ec4f5102c763.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -24,15 +24,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "nixpkgs-unstable",
+        "branch": "master",
         "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
         "homepage": "https://github.com/NixOS/nixpkgs",
-        "owner": "NixOS",
-        "repo": "nixpkgs-channels",
-        "rev": "ccd458053b0eaf66c1f639ee1396248d8f4431e2",
-        "sha256": "1qwnmmb2p7mj1h1ffz1wvkr1v55qbhzvxr79i3a15blq622r4al9",
+        "owner": "djanatyn",
+        "repo": "nixpkgs",
+        "rev": "922027d4be8cb001d213e7ac4846cc3cfdd4fdc9",
+        "sha256": "02czxa7rrq8awvfnyghr5qzq5jvpjk412hqm77ncw8vgz244rg63",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs-channels/archive/ccd458053b0eaf66c1f639ee1396248d8f4431e2.tar.gz",
+        "url": "https://github.com/djanatyn/nixpkgs/archive/922027d4be8cb001d213e7ac4846cc3cfdd4fdc9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "slippi": {

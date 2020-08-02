@@ -282,6 +282,7 @@ in {
     sshuttle
 
     # games
+    flips
     slippi.netplay
     slippi.playback
     runelite
