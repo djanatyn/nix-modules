@@ -218,7 +218,7 @@ in {
     ansible-lint
 
     # chat
-    discord
+    discord-canary
     spectral
 
     # torrent
