@@ -48,6 +48,7 @@ in {
   # nix configuration
   # =================
   services.lorri.enable = true;
+  nix.useSandbox = true;
 
   # use the latest kernel available
   boot.kernelPackages = pkgs.linuxPackages_latest;
