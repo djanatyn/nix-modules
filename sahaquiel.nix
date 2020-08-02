@@ -25,7 +25,7 @@ in {
   # flowercluster services
   # ======================
   flowercluster.services.sourcehut.enable = true;
-  flowercluster.services.monitoring.enable = true;
+  services.flowercluster.monitoring.enable = true;
   flowercluster.services.factorio.enable = true;
 
   # user account

@@ -1,9 +1,9 @@
 { config, lib, ... }:
 with lib;
-let cfg = config.flowercluster.services.monitoring;
+let cfg = config.services.flowercluster.monitoring;
 in {
   options = {
-    flowercluster.services.monitoring.enable = mkEnableOption "monitoring";
+    services.flowercluster.monitoring.enable = mkEnableOption "monitoring";
   };
 
   config = mkIf cfg.enable {
