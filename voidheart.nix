@@ -297,13 +297,22 @@ in {
         libretro.fbalpha2012
       ];
     })
-    lutris
-    (wine.override { wineBuild = "wineWow"; })
-    steam
-    lutris
     sgtpuzzles
     multimc
     eidolon
+    (wine.override { wineBuild = "wineWow"; })
+    (writeScriptBin "lutris" ''
+      #!${pkgs.stdenv.shell}
+
+      export RADV_PERFTEST=aco
+      exec ${pkgs.lutris}/bin/lutris "$@"
+    '')
+    (writeScriptBin "steam" ''
+      #!${pkgs.stdenv.shell}
+
+      export RADV_PERFTEST=aco
+      exec ${pkgs.steam}/bin/steam "$@"
+    '')
 
     # streaming
     obs-studio
