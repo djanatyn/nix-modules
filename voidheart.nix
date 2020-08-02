@@ -161,7 +161,6 @@ in {
 
     # browser
     firefox
-    tor-browser-bundle-bin
 
     # nix
     nixfmt
@@ -273,7 +272,6 @@ in {
         libretro.snes9x
         libretro.dolphin
         libretro.vba-m
-        libretro.mame2016
         libretro.fbalpha2012
       ];
     })
