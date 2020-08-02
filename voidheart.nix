@@ -283,8 +283,6 @@ in {
 
     # games
     flips
-    slippi.netplay
-    slippi.playback
     runelite
     (retroarch.override {
       cores = [
@@ -301,6 +299,14 @@ in {
     multimc
     eidolon
     (wine.override { wineBuild = "wineWow"; })
+    slippi.playback
+    (writeScriptBin "slippi-netplay" ''
+      #!${stdenv.shell}
+
+      exec ${slippi.netplay}/bin/slippi-netplay \
+        -u "''${HOME}/slippi-config" \
+        "$@"
+    '')
     (writeScriptBin "lutris" ''
       #!${pkgs.stdenv.shell}
 
