@@ -4,7 +4,7 @@ let
   overlay = _: pkgs: { slippi = import sources.slippi { }; };
 
   pkgs = import sources.nixpkgs {
-    overlays = [ overlay ];
+    overlays = [ overlay (import sources.nixpkgs-mozilla) ];
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
@@ -174,41 +174,48 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    # network
-    networkmanagerapplet
-
-    # for finding SHA256 hashes
-    nix-prefetch-scripts
 
     # browser
-    firefox
+    latest.firefox-nightly-bin
+    chromium
 
     # nix
+    nix-prefetch-scripts
     nixfmt
     nox
     patchelf
-    morph
 
     # system
-    zsh
-    htop
+    rsync
     which
     file
     dnsutils
     whois
-    mtr
     binutils
+
+    # terminal
     rxvt_unicode
-    rsync
-    exa
-    tmux
-
-    # virtualisation.xen.trace
-    qemu_kvm
-
-    # fonts
     terminus_font
     terminus_font_ttf
+
+    # shell
+    nushell
+    zsh
+    exa
+    procs
+    tmux
+    htop
+    ytop
+    bat
+    fzy
+
+    # network
+    mtr
+    rtorrent
+    networkmanagerapplet
+
+    # virtualisation
+    qemu_kvm
 
     # java
     openjdk11
@@ -218,20 +225,13 @@ in {
     unrar
 
     # utilities
-    unrar
     xclip
     aspell
-    silver-searcher
-    bat
-    fzy
 
     # hashicorp
     terraform
     packer
     nomad
-
-    # music
-    spotify
 
     # ansible
     ansible
@@ -241,19 +241,25 @@ in {
     discord-canary
     spectral
 
-    # torrent
-    rtorrent
-
     # media
-    vlc
+    mpv
+    spotify
     pavucontrol
-
-    # environment
-    chezmoi
+    pulsemixer
 
     # editor
     emacs
     vim
+
+    # searching
+    ripgrep
+    fd
+    sd
+    silver-searcher
+
+    # filesystem
+    du-dust
+    broot
 
     # development
     direnv
@@ -265,6 +271,11 @@ in {
     gitAndTools.diff-so-fancy
     google-cloud-sdk
     cloc
+    tokei
+    hyperfine
+
+    # rust
+    latest.rustChannels.nightly.rust
 
     # haskell
     stack
