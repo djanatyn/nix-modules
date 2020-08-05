@@ -1,7 +1,21 @@
 { config, ... }:
 let
-  sources = import ./niv/sources.nix;
-  overlay = _: pkgs: { slippi = import sources.slippi { }; };
+  sources = import ./niv/sources.nix { };
+  slippi-source = import sources.slippi { };
+
+  overlay = _: pkgs: {
+    slippi = {
+      playback = slippi-source.playback;
+      netplay = with pkgs;
+        writeScriptBin "slippi-netplay" ''
+          #!${stdenv.shell}
+
+          exec ${slippi-source.netplay}/bin/slippi-netplay \
+            -u "''${HOME}/slippi-config" \
+            "$@"
+        '';
+    };
+  };
 
   pkgs = import sources.nixpkgs {
     overlays = [ overlay (import sources.nixpkgs-mozilla) ];
@@ -311,13 +325,7 @@ in {
     eidolon
     (wine.override { wineBuild = "wineWow"; })
     slippi.playback
-    (writeScriptBin "slippi-netplay" ''
-      #!${stdenv.shell}
-
-      exec ${slippi.netplay}/bin/slippi-netplay \
-        -u "''${HOME}/slippi-config" \
-        "$@"
-    '')
+    slippi.netplay
     (writeScriptBin "lutris" ''
       #!${pkgs.stdenv.shell}
 
