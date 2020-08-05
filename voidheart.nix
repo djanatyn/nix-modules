@@ -1,21 +1,6 @@
 { config, ... }:
 let
   sources = import ./niv/sources.nix { };
-  slippi-source = import sources.slippi { };
-
-  overlay = _: pkgs: {
-    slippi = {
-      playback = slippi-source.playback;
-      netplay = with pkgs;
-        writeScriptBin "slippi-netplay" ''
-          #!${stdenv.shell}
-
-          exec ${slippi-source.netplay}/bin/slippi-netplay \
-            -u "''${HOME}/slippi-config" \
-            "$@"
-        '';
-    };
-  };
 
   pkgs = import sources.nixpkgs {
     overlays = [ overlay (import sources.nixpkgs-mozilla) ];
@@ -27,6 +12,37 @@ let
       ];
     };
   };
+
+  overlay = self: super:
+    with super; {
+      wine = wine.override { wineBuild = "wineWow"; };
+
+      lutris = writeScriptBin "lutris" ''
+        #!${stdenv.shell}
+
+        export RADV_PERFTEST=aco
+        exec ${lutris}/bin/lutris "$@"
+      '';
+
+      steam = writeScriptBin "steam" ''
+        #!${stdenv.shell}
+
+        export RADV_PERFTEST=aco
+        exec ${steam}/bin/steam "$@"
+      '';
+
+      slippi = let slippi-niv = import sources.slippi { };
+      in {
+        playback = slippi-niv.playback;
+        netplay = writeScriptBin "slippi-netplay" ''
+          #!${stdenv.shell}
+
+          exec ${slippi-niv.netplay}/bin/slippi-netplay \
+            -u "''${HOME}/slippi-config" \
+            "$@"
+        '';
+      };
+    };
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -323,21 +339,12 @@ in {
     sgtpuzzles
     multimc
     eidolon
-    (wine.override { wineBuild = "wineWow"; })
+
+    # overlay packages
+    steam
+    lutris
     slippi.playback
     slippi.netplay
-    (writeScriptBin "lutris" ''
-      #!${pkgs.stdenv.shell}
-
-      export RADV_PERFTEST=aco
-      exec ${pkgs.lutris}/bin/lutris "$@"
-    '')
-    (writeScriptBin "steam" ''
-      #!${pkgs.stdenv.shell}
-
-      export RADV_PERFTEST=aco
-      exec ${pkgs.steam}/bin/steam "$@"
-    '')
 
     # streaming
     obs-studio
