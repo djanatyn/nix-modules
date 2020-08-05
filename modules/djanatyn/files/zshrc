@@ -120,7 +120,7 @@ copy_keys() {
 
 # gpg
 # ===
-if [[ $(type gpgconf) ]]; then
+if command -v gpgconf %> /dev/null; then
   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
