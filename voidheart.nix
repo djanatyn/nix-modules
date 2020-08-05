@@ -1,18 +1,5 @@
 { config, ... }:
 let
-  sources = import ./niv/sources.nix { };
-
-  pkgs = import sources.nixpkgs {
-    overlays = [ overlay (import sources.nixpkgs-mozilla) ];
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        # required for lutris package
-        "p7zip-16.02"
-      ];
-    };
-  };
-
   overlay = self: super:
     with super; {
       wine = wine.override { wineBuild = "wineWow"; };
@@ -43,6 +30,19 @@ let
         '';
       };
     };
+
+  sources = import ./niv/sources.nix { };
+
+  pkgs = import sources.nixpkgs {
+    overlays = [ overlay (import sources.nixpkgs-mozilla) ];
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        # required for lutris package
+        "p7zip-16.02"
+      ];
+    };
+  };
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
