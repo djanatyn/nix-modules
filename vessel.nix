@@ -91,5 +91,5 @@ in with pkgs; {
   # packages
   # ========
   environment.systemPackages =
-    [ zsh openjdk8 consul nomad vim exa git python tmux ];
+    [ zsh openjdk8 consul nomad vim exa git python tmux fzy ];
 }
