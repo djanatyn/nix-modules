@@ -2,6 +2,18 @@
 let
   overlay = self: super:
     with super; {
+      retroarch = retroarch.override {
+        cores = [
+          libretro.mupen64plus
+          libretro.parallel-n64
+          libretro.fceumm
+          libretro.snes9x
+          libretro.dolphin
+          libretro.vba-m
+          libretro.fbalpha2012
+        ];
+      };
+
       wine = wine.override { wineBuild = "wineWow"; };
 
       lutris = writeScriptBin "lutris" ''
@@ -325,17 +337,7 @@ in {
     # games
     flips
     runelite
-    (retroarch.override {
-      cores = [
-        libretro.mupen64plus
-        libretro.parallel-n64
-        libretro.fceumm
-        libretro.snes9x
-        libretro.dolphin
-        libretro.vba-m
-        libretro.fbalpha2012
-      ];
-    })
+    retroarch
     sgtpuzzles
     multimc
     eidolon
