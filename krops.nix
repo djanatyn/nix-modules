@@ -8,24 +8,20 @@ let
   pkgs = import "${krops}/pkgs" { };
 
   sources = {
-    sahaquiel = lib.evalSource [{
-      nixpkgs.git = {
-        clean.exclude = [ "/.version-suffix" ];
-        url = "https://github.com/nixos/nixpkgs";
-        ref = "8a39a8ee79cc25bd13d8d374eda4ba1c87c0ac33";
-      };
-      nixos-config.file = toString ./sahaquiel.nix;
+    vessel = lib.evalSource [{
+      nixos-config.file = toString ./vessel.nix;
       modules.file = toString ./modules;
+      niv.file = toString ./niv;
 
       secrets.pass = {
         dir = toString /var/secrets;
-        name = "sahaquiel";
+        name = "vessel";
       };
     }];
   };
 in {
-  sahaquiel = pkgs.krops.writeDeploy "deploy-sahaquiel" {
-    source = sources.sahaquiel;
-    target = "root@sahaquiel.flowercluster.io";
+  vessel = pkgs.krops.writeDeploy "deploy-vessel" {
+    source = sources.vessel;
+    target = "root@vessel.voidheart.io";
   };
 }

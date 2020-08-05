@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  sources = import ./nix/sources.nix;
+  sources = import ./niv/sources.nix;
   overlay = _: pkgs: { slippi = import sources.slippi { }; };
 
   pkgs = import sources.nixpkgs {
@@ -238,7 +238,7 @@ in {
     ansible-lint
 
     # chat
-    discord-canary
+    discord
     spectral
 
     # media
