@@ -6,8 +6,9 @@ let
     with super; {
       work-rebuild = writeScriptBin "work-rebuild" ''
         #!${stdenv.shell}
-
-        exec darwin-rebuild -I "$${HOME}/repos/nix-modules/work.nix" "$@"
+        exec darwin-rebuild \
+          -I "$${HOME}/repos/nix-modules/work.nix" \
+          "$@"
       '';
     };
 
