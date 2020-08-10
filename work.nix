@@ -24,7 +24,7 @@ in {
 
   macos.username = "stricklanj";
   djanatyn.username = "stricklanj";
-  djanatyn.email = "djanatyn@gmail.com";
+  djanatyn.email = "stricklanj@ae.com";
 
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
