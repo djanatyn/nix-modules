@@ -7,7 +7,7 @@ let
       work-rebuild = writeScriptBin "work-rebuild" ''
         #!${stdenv.shell}
         exec darwin-rebuild \
-          -I "''${HOME}/repos/nix-modules/work.nix" \
+          -I "darwin-config=''${HOME}/repos/nix-modules/work.nix" \
           "$@"
       '';
     };
@@ -46,6 +46,9 @@ in {
     # filesystem
     du-dust
     broot
+
+    # browser
+    brotab
 
     # nushell???
     nushell
