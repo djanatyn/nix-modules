@@ -41,22 +41,33 @@ in {
     jq
     tree
     moreutils
+    procs
+
+    # filesystem
+    du-dust
+    broot
+
+    # nushell???
+    nushell
 
     # searching
-    ag
+    fd
+    sd
+    ripgrep
     fzf
 
     # shell
     tmux
     tmuxp
 
-    # configuration
-    chezmoi
-
     # development
     entr
     clang
     cloc
+    tokei
+    hyperfine
+    gitAndTools.diff-so-fancy
+    gitAndTools.pre-commit
     tig
 
     # secrets
@@ -71,8 +82,7 @@ in {
 
     # nix
     nixfmt
-
-    # music
-    ncmpcpp
+    nix-prefetch-scripts
+    direnv
   ];
 }
