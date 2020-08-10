@@ -1,13 +1,23 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "8bbefa77f7e95c80005350aeac6fe425ce47c288";
-    ref = "master";
+  sources = import ./niv/sources.nix { };
+
+  overlay = self: super:
+    with super; {
+      work-rebuild = writeScriptBin "work-rebuild" ''
+        #!${stdenv.shell}
+
+        exec darwin-rebuild -I "$${HOME}/repos/nix-modules/work.nix" "$@"
+      '';
+    };
+
+  pkgs = import sources.nixpkgs {
+    overlays = [ overlay ];
+    config = { allowUnfree = true; };
   };
 in {
   imports = [
-    (import "${home-manager}/nix-darwin")
+    (import "${sources.home-manager}/nix-darwin")
     ./modules/macos
     ./modules/djanatyn
   ];
@@ -21,6 +31,9 @@ in {
   environment.variables.EDITOR = "emacsclient";
 
   environment.systemPackages = with pkgs; [
+    # overlay packages
+    work-rebuild
+
     # system utilities
     bat
     exa
@@ -33,7 +46,6 @@ in {
     fzf
 
     # shell
-    zsh
     tmux
     tmuxp
 
