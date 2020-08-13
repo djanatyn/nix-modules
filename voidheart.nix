@@ -309,6 +309,8 @@ in {
     git
     gist
     git-lfs
+    gitAndTools.git-annex
+    gitAndTools.git-annex-utils
     gitAndTools.pre-commit
     gitAndTools.diff-so-fancy
     google-cloud-sdk
