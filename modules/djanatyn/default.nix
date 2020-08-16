@@ -55,6 +55,23 @@ in {
         userEmail = cfg.email;
       };
 
+      # play tmuxp
+      home.file.".tmuxp/play.yaml".text = lib.generators.toYAML { } {
+        session_name = "play";
+        windows = [
+          {
+            window_name = "nixpkgs";
+            start_directory = "~/repos/nixpkgs";
+            panes = [ "blank" ];
+          }
+          {
+            window_name = "nix-modules";
+            start_directory = "~/repos/nix-modules";
+            panes = [ "blank" ];
+          }
+        ];
+      };
+
       # work tmuxp
       home.file.".tmuxp/work.yaml".text = lib.generators.toYAML { } {
         session_name = "workin'";
