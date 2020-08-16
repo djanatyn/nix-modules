@@ -246,6 +246,7 @@ in {
     exa
     procs
     tmux
+    tmuxp
     htop
     ytop
     bat
