@@ -16,6 +16,20 @@ let
 
       wine = wine.override { wineBuild = "wineWow"; };
 
+      ritual = writeScriptBin "ritual" ''
+        #!${stdenv.shell}
+        cat <<EOF
+        The lantern has been lit, and your summons heeded. A fine stage
+        you chose, this kingdom fallowed by worm and root, perfect earth upon
+        which our Ritual shall take place.
+
+        EOF
+
+        exec nixos-rebuild \
+          -I "nixos-config=''${HOME}/repos/nix-modules/voidheart.nix" \
+          "$@"
+      '';
+
       lutris = writeScriptBin "lutris" ''
         #!${stdenv.shell}
 
@@ -222,6 +236,7 @@ in {
     chromium
 
     # nix
+    ritual
     nix-prefetch-scripts
     nixfmt
     nox
