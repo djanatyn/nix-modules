@@ -12,6 +12,7 @@ in with pkgs; {
     <modules/consul>
     <modules/nomad>
     <modules/terraria>
+    <modules/factorio>
     <modules/monitoring>
     <modules/sourcehut>
     <modules/djanatyn>
@@ -68,10 +69,7 @@ in with pkgs; {
   };
 
   services = {
-    factorio = {
-      enable = true;
-      password = lib.fileContents /var/src/secrets/factorio/password;
-    };
+    voidheart.factorio.enable = true;
 
     postgresql = {
       enable = true;

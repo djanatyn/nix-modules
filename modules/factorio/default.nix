@@ -1,26 +1,26 @@
 { config, pkgs, lib, ... }:
 with lib;
 let
-  cfg = config.flowercluster.services.factorio;
-  factorio-latest = pkgs.factorio-headless-experimental.overrideAttrs
-    (old: rec {
-      version = "0.18.31";
-      name = "factorio_headless_linux64-0.18.31.tar.xz";
+  cfg = config.services.voidheart.factorio;
+  factorio = pkgs.factorio-headless-experimental.overrideAttrs (oldAttrs: rec {
+    name = "factorio-${releaseType}-${version}";
+    version = "1.0.0";
+    releaseType = "headless";
+    arch = "linux64";
 
-      src = pkgs.fetchurl {
-        inherit name;
-        url = "https://www.factorio.com/get-download/0.18.31/headless/linux64";
-        sha256 = "17jslya538k910ppgfshzhxzbaxlf92ldbbcy1bhjyarmhwyk0i8";
-      };
-    });
+    src = pkgs.fetchurl {
+      name = "factorio-${releaseType}_${arch}-${version}.tar.xz";
+      url =
+        "https://www.factorio.com/get-download/${version}/${releaseType}/${arch}";
+      sha256 = "0r0lplns8nxna2viv8qyx9mp4cckdvx6k20w2g2fwnj3jjmf3nc1";
+    };
+  });
 in {
-  options = {
-    flowercluster.services.factorio.enable = mkEnableOption "factorio";
-  };
+  options = { services.voidheart.factorio.enable = mkEnableOption "factorio"; };
 
   config = mkIf cfg.enable {
     services.factorio.enable = true;
-    services.factorio.package = factorio-latest;
+    services.factorio.package = factorio;
 
     services.factorio.password =
       lib.fileContents /var/src/secrets/factorio/password;
