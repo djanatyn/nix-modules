@@ -90,7 +90,7 @@ in with pkgs; {
 
     openssh = {
       enable = true;
-      ports = [ 22 8888 ];
+      ports = [ 8888 ];
     };
 
     fail2ban.enable = true;
