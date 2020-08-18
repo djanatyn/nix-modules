@@ -14,7 +14,6 @@ in with pkgs; {
     <modules/terraria>
     <modules/monitoring>
     <modules/sourcehut>
-    <modules/factorio>
     <modules/djanatyn>
     <modules/pri>
     (import "${sources.home-manager}/nixos")
@@ -69,6 +68,11 @@ in with pkgs; {
   };
 
   services = {
+    factorio = {
+      enable = true;
+      password = lib.fileContents /var/src/secrets/factorio/password;
+    };
+
     postgresql = {
       enable = true;
       package = postgresql_10;
