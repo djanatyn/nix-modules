@@ -8,13 +8,13 @@ let
   };
 in with pkgs; {
   imports = [
-    # <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
+    "${sources.nixpkgs}/nixos/modules/profiles/qemu-guest.nix"
+    "${sources.nixpkgs}/nixos/modules/services/misc/sourcehut"
     <modules/consul>
     <modules/nomad>
     <modules/terraria>
     <modules/factorio>
     <modules/monitoring>
-    <modules/sourcehut>
     <modules/djanatyn>
     <modules/pri>
     (import "${sources.home-manager}/nixos")
@@ -70,6 +70,21 @@ in with pkgs; {
 
   services = {
     voidheart.factorio.enable = true;
+
+    sourcehut = {
+      enable = true;
+      services = [ "meta" "git" "paste" ];
+      settings = {
+        webhooks = {
+          private-key =
+            lib.fileContents /var/src/secrets/sourcehut/webhooks/private-key;
+        };
+        "sr.ht" = {
+          secret-key = lib.fileContents /var/src/secrets/sourcehut/secret-key;
+        };
+        "meta.sr.ht" = { origin = "vessel.voidheart.io"; };
+      };
+    };
 
     postgresql = {
       enable = true;
