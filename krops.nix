@@ -22,6 +22,6 @@ let
 in {
   vessel = pkgs.krops.writeDeploy "deploy-vessel" {
     source = sources.vessel;
-    target = "root@167.114.113.126";
+    target = "root@vessel.voidheart.io:8888";
   };
 }
