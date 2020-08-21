@@ -357,6 +357,7 @@ in {
     sshuttle
 
     # games
+    xonotic
     flips
     runelite
     retroarch
