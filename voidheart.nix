@@ -338,9 +338,6 @@ in {
     tokei
     hyperfine
 
-    # rust
-    latest.rustChannels.nightly.rust
-
     # haskell
     stack
     ormolu
