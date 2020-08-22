@@ -370,6 +370,7 @@ in {
 
     # streaming
     obs-studio
+    screenkey
 
     # window management
     nitrogen
