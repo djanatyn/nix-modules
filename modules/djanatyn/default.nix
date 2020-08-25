@@ -73,19 +73,59 @@ in {
       };
 
       # work tmuxp
+      home.file.".tmuxp/pivotal.yaml".text = lib.generators.toYAML { } {
+        session_name = "pivotal";
+        windows = [
+          {
+            window_name = "control-plane";
+            start_directory = "~/repos/cf-automation";
+            panes = [{
+              shell_command = [
+                "source ./targets/control-plane/ops-manager-credhub-bosh && bosh vms"
+              ];
+            }];
+          }
+          {
+            window_name = "canary";
+            start_directory = "~/repos/cf-automation";
+            panes = [{
+              shell_command = [
+                "source ./targets/sandbox/ops-manager-credhub-bosh && bosh vms"
+              ];
+            }];
+          }
+          {
+            window_name = "nonprod";
+            start_directory = "~/repos/cf-automation";
+            panes = [{
+              shell_command = [
+                "source ./targets/non-prod/ops-manager-credhub-bosh && bosh vms"
+              ];
+            }];
+          }
+          {
+            window_name = "production";
+            start_directory = "~/repos/cf-automation";
+            panes = [{
+              shell_command = [
+                "source ./targets/production/ops-manager-credhub-bosh && bosh vms"
+              ];
+            }];
+          }
+        ];
+      };
+
       home.file.".tmuxp/work.yaml".text = lib.generators.toYAML { } {
         session_name = "workin'";
         windows = [
           {
             window_name = "nixpkgs";
-            start_directory = "~/.nix-defexpr/channels_root/nixpkgs";
-            panes = [{
-              shell_command = [ "bat ~/.nixpkgs/darwin-configuration.nix" ];
-            }];
+            start_directory = "~/repos/nixpkgs";
+            panes = [ "blank" ];
           }
           {
-            window_name = "aeo-nix";
-            start_directory = "~/repos/aeo-nix";
+            window_name = "nix-modules";
+            start_directory = "~/repos/nix-modules";
             panes = [ "blank" ];
           }
           {

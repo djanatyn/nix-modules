@@ -13,7 +13,7 @@ let
     };
 
   pkgs = import sources.nixpkgs {
-    overlays = [ overlay ];
+    overlays = [ overlay (import sources.nixpkgs-mozilla) ];
     config = { allowUnfree = true; };
   };
 in {
@@ -71,6 +71,8 @@ in {
     hyperfine
     gitAndTools.diff-so-fancy
     gitAndTools.pre-commit
+    gitAndTools.git-annex
+    gitAndTools.git-annex-utils
     tig
 
     # secrets
@@ -82,10 +84,15 @@ in {
     # ssh
     assh
     sshpass
+    sshuttle
+
+    # mail
+    davmail
 
     # nix
     nixfmt
     nix-prefetch-scripts
+    niv
     direnv
   ];
 }
