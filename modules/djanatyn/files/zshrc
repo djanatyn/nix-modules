@@ -101,4 +101,5 @@ if [ -f '/Users/stricklanj/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/stri
 if [ -f '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc'; fi
 
 # blast off
+export RPS1=
 eval "$(starship init zsh)"
