@@ -48,7 +48,6 @@ zplug 'zsh-users/zsh-autosuggestions', defer:2
 zplug 'zdharma/fast-syntax-highlighting', defer:2
 zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug 'aperezdc/zsh-fzy'
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 if ! zplug check; then
     zplug install
@@ -92,11 +91,6 @@ export ANSIBLE_NOCOWS=1
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH}/bin:${PATH}"
 
-# powerlevel9k
-# ============
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context time dir command_execution_time status)
-
 # utility functions
 # ==============
 fix-ssh() {
@@ -120,12 +114,13 @@ copy_keys() {
 
 # gpg
 # ===
-if command -v gpgconf %> /dev/null; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/stricklanj/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/stricklanj/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc'; fi
+
+# blast off
+eval "$(starship init zsh)"

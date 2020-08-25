@@ -60,8 +60,14 @@ in {
     fzf
 
     # shell
+    starship
     tmux
     tmuxp
+
+    # config
+    dhall
+    dhall-bash
+    dhall-json
 
     # development
     entr
