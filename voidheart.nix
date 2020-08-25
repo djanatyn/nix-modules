@@ -16,6 +16,15 @@ let
 
       wine = wine.override { wineBuild = "wineWow"; };
 
+      jackett = jackett.overrideAttrs (oldAttrs: rec {
+        version = "0.16.1038";
+        src = pkgs.fetchurl {
+          url =
+            "https://github.com/Jackett/Jackett/releases/download/v${version}/Jackett.Binaries.LinuxAMDx64.tar.gz";
+          sha256 = "1mqizih40d76mbywgsh2w9wg2hwhqx1p0039bqlq3108cx2nqkb9";
+        };
+      });
+
       ritual = writeScriptBin "ritual" ''
         #!${stdenv.shell}
         cat <<EOF
@@ -203,6 +212,11 @@ in {
 
     openvpn.servers = {
       expressvpn = { config = "config /root/nixos/openvpn/expressvpn.conf"; };
+    };
+
+    jackett = {
+      enable = true;
+      package = pkgs.jackett;
     };
 
     udev.extraRules = ''
