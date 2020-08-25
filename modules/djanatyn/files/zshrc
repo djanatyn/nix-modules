@@ -46,7 +46,6 @@ zplug 'sharat87/zsh-vim-mode'
 zplug 'chrissicool/zsh-256color'
 zplug 'zsh-users/zsh-autosuggestions', defer:2
 zplug 'zdharma/fast-syntax-highlighting', defer:2
-zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug 'aperezdc/zsh-fzy'
 
 if ! zplug check; then
@@ -90,27 +89,6 @@ export ANSIBLE_NOCOWS=1
 # ==
 export GOPATH="${HOME}/.go"
 export PATH="${GOPATH}/bin:${PATH}"
-
-# utility functions
-# ==============
-fix-ssh() {
-  export "$(tmux show-environment | grep '^SSH_AUTH_SOCK=')"
-}
-
-# grab IPs for use with sshuttle
-_sshuttle_ips() {
-  for record in "${@}"; do
-    dig +short "${record}" | perl -pne 's{\n}{/32 }'
-  done
-}
-
-sshuttle_dns() {
-  sshuttle -vr lotus "$(_sshuttle_ips "${@}")"
-}
-
-copy_keys() {
-  sshpass -p "$(pass show current_password)" ssh-copy-id -i ~/.ssh/id_ae.pub "${@}"
-}
 
 # gpg
 # ===
