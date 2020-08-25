@@ -64,7 +64,8 @@ in with pkgs; {
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8888 ];
+      allowedTCPPorts = [ 8888 7777 ];
+      allowedUDPPorts = [ 7777 ];
     };
   };
 
@@ -116,7 +117,7 @@ in with pkgs; {
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages =
-    [ zsh openjdk8 consul nomad vim exa git python tmux fzy ];
+    [ zsh openjdk8 consul nomad vim exa git python tmux fzy zip unzip ];
 
   fileSystems = {
     "/" = {
