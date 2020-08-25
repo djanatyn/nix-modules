@@ -276,6 +276,7 @@ in {
     # shell
     nushell
     zsh
+    starship
     exa
     procs
     tmux
