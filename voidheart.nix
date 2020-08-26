@@ -277,6 +277,7 @@ in {
     # shell
     nushell
     zsh
+    fzf
     starship
     exa
     procs
@@ -285,7 +286,6 @@ in {
     htop
     ytop
     bat
-    fzy
 
     # network
     mtr

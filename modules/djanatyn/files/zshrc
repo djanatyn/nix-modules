@@ -43,10 +43,9 @@ source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug 'sharat87/zsh-vim-mode'
-zplug 'chrissicool/zsh-256color'
-zplug 'zsh-users/zsh-autosuggestions', defer:2
-zplug 'zdharma/fast-syntax-highlighting', defer:2
-zplug 'aperezdc/zsh-fzy'
+zplug 'zsh-users/zsh-autosuggestions', defer:3
+zplug 'zdharma/fast-syntax-highlighting', defer:3
+zplug 'Aloxaf/fzf-tab', defer:2
 
 if ! zplug check; then
     zplug install
@@ -59,12 +58,6 @@ zplug load
 autoload edit-command-line
 bindkey -M vicmd v edit-command-line
 zle -N edit-command-line
-
-# fzy
-# ===
-bindkey '\ec' fzy-cd-widget
-bindkey '^T'  fzy-file-widget
-bindkey '^R'  fzy-history-widget
 
 # history
 # =======
