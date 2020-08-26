@@ -10,6 +10,7 @@ in {
     programs.bash.enable = true;
 
     # use nix-daemon on macos
+    programs.nix-index.enable = true;
     services.nix-daemon.enable = true;
     nix.package = pkgs.nix;
     nix.trustedBinaryCaches =
