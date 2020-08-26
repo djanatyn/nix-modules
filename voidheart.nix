@@ -286,6 +286,9 @@ in {
     htop
     ytop
     bat
+    xmlstarlet
+    jq
+    yq
 
     # network
     mtr
