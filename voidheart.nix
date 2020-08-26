@@ -224,6 +224,7 @@ in {
       ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
     '';
 
+    jellyfin.enable = true;
     openssh.enable = true;
     lorri.enable = true;
     flowercluster.monitoring.enable = true;
@@ -323,6 +324,7 @@ in {
     spotify
     pavucontrol
     pulsemixer
+    jftui
 
     # editor
     emacs
