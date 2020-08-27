@@ -389,6 +389,7 @@ in {
     sshuttle
 
     # games
+    wine
     xonotic
     flips
     runelite
