@@ -1,40 +1,29 @@
 { config, ... }:
 let
   sources = import ./niv/sources.nix { };
-
-  overlay = self: super:
-    with super; {
-      work-rebuild = writeScriptBin "work-rebuild" ''
-        #!${stdenv.shell}
-        exec darwin-rebuild \
-          -I "darwin-config=''${HOME}/repos/nix-modules/work.nix" \
-          "$@"
-      '';
-    };
+  username = "stricklanj";
+  checkout = "/Users/${username}/repos/nix-modules";
 
   pkgs = import sources.nixpkgs {
-    overlays = [ overlay (import sources.nixpkgs-mozilla) ];
+    overlays = [ (import sources.nixpkgs-mozilla) ];
     config = { allowUnfree = true; };
   };
 in {
   imports = [
     (import "${sources.home-manager}/nix-darwin")
-    ./modules/macos
-    ./modules/djanatyn
+    "${checkout}/modules/macos"
+    "${checkout}/modules/djanatyn"
   ];
 
-  macos.username = "stricklanj";
-  djanatyn.username = "stricklanj";
+  macos.username = username;
+  djanatyn.username = username;
   djanatyn.email = "stricklanj@ae.com";
 
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
+  environment.darwinConfig = "${checkout}/work.nix";
   environment.variables.EDITOR = "emacsclient";
-
   environment.systemPackages = with pkgs; [
-    # overlay packages
-    work-rebuild
-
     # system utilities
     bat
     exa
