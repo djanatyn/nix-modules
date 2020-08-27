@@ -133,8 +133,8 @@
        ;; toward a specific purpose. They may have additional dependencies and
        ;; should be loaded late.
        :app
-      (email +gmail)    ; emacs as an email client
       ;irc               ; how neckbeards socialize
+       (email +notmuch)    ; emacs as an email client
        (rss +org) ; emacs as an RSS reader
       ;twitter           ; twitter client https://twitter.com/vnought
       ;(write            ; emacs as a word processor (latex + org + markdown)
