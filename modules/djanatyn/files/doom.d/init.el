@@ -10,14 +10,14 @@
 
  :ui doom doom-dashboard doom-quit modeline ophints fill-column hl-todo
  nav-flash (popup +all +defaults) pretty-code vc-gutter vi-tilde-fringe
- window-select
+ window-select treemacs hydra zen minimap
 
  :editor snippets (evil +everywhere) file-templates (format +onsave)
  multiple-cursors parinfer rotate-text
 
- :emacs dired electric hideshow term vc
+ :emacs dired electric hideshow vc
 
- :term eshell
+ :term eshell term
 
  :tools lookup eval ansible docker editorconfig gist make magit password-store
  tmux upload
@@ -26,8 +26,7 @@
  (org +attach +babel +capture +export +present)
  python (sh +zsh)
 
- :email
- mu4e
+ :email notmuch
 
  :app
  (rss +org)
