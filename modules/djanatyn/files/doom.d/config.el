@@ -35,3 +35,7 @@
 
 ;; elfeed
 (setq rmh-elfeed-org-files (list "~/.feeds.org"))
+
+;; pinentry
+(setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
+(pinentry-start)

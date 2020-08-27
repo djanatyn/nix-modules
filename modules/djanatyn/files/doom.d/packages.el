@@ -5,3 +5,4 @@
 (package! monokai-theme)
 (package! leuven-theme)
 (package! symon)
+(package! pinentry)
