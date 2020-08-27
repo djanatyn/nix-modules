@@ -39,6 +39,11 @@ in {
     # browser
     brotab
 
+    # email
+    davmail
+    isync
+    notmuch
+
     # nushell???
     nushell
 
