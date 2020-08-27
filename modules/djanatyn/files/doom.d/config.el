@@ -39,3 +39,6 @@
 ;; pinentry
 (setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
 (pinentry-start)
+
+;; email
+(setq +notmuch-sync-backend 'mbsync)
