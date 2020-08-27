@@ -219,6 +219,21 @@ in {
       package = pkgs.jackett;
     };
 
+    dnsmasq = {
+      enable = true;
+      servers = [ "8.8.8.8" ];
+      extraConfig = ''
+        strict-order
+        no-resolv
+        log-queries
+
+        server=/ae.com/192.168.1.108
+        server=/ae-cf.io/192.168.1.108
+
+        address=/work.lan/192.168.1.108
+      '';
+    };
+
     udev.extraRules = ''
       # gamecube wii u usb adapter
       ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
