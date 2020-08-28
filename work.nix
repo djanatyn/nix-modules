@@ -1,8 +1,7 @@
 { config, ... }:
 let
   sources = import ./niv/sources.nix { };
-  username = "stricklanj";
-  checkout = "/Users/${username}/repos/nix-modules";
+  checkout = "/Users/stricklanj/repos/nix-modules";
 
   pkgs = import sources.nixpkgs {
     overlays = [ (import sources.nixpkgs-mozilla) ];
@@ -15,14 +14,22 @@ in {
     "${checkout}/modules/djanatyn"
   ];
 
-  macos.username = username;
-  djanatyn.username = username;
-  djanatyn.email = "stricklanj@ae.com";
+  macos.trustedUsers = [ "stricklanj" ];
+  djanatyn = {
+    username = "stricklanj";
+    email = {
+      address = "stricklanj@ae.com";
+      mbsync.enable = true;
+    };
+  };
+
+  # darwin nix
+  environment.darwinConfig = "${checkout}/work.nix";
 
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
-  environment.darwinConfig = "${checkout}/work.nix";
   environment.variables.EDITOR = "emacsclient";
+
   environment.systemPackages = with pkgs; [
     # system utilities
     bat

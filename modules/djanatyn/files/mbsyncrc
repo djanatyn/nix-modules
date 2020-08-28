@@ -1,0 +1,25 @@
+IMAPAccount work
+Host localhost
+Port 1143
+User stricklanj
+PassCmd "+pass show stricklanj@ae.com"
+SSLType NONE
+AuthMechs LOGIN
+Timeout 120
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+Path ~/mail/work/
+Inbox ~/mail/work/Inbox
+
+Channel work
+Master :work-remote:
+Slave :work-local:
+Patterns "INBOX" "*"
+Create Both
+Sync New
+MaxMessages 1000
+ExpireUnread yes
+SyncState *
