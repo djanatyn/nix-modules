@@ -42,3 +42,13 @@
 
 ;; email
 (setq +notmuch-sync-backend 'mbsync)
+
+;; irc
+(after! circe
+  (set-irc-server! "chat.freenode.net"
+    `(:tls t
+      :port 6697
+      :nick "djanatyn"
+      :sasl-username ,(+pass-get-user "irc/freenode.net")
+      :sasl-password (lambda (&rest _),(+pass-get-secret "irc/freenode.net"))
+      :channels ("#jbopre" "#emacs"))))
