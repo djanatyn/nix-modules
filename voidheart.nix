@@ -284,6 +284,10 @@ in {
     whois
     binutils
 
+    # tls
+    gnutls
+    openssl
+
     # terminal
     rxvt_unicode
     terminus_font
