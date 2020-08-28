@@ -5,10 +5,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "a3dd580adc46628dd0c970037b6c87cff1251af5",
-        "sha256": "13qplav382kd7gblvxqi0zxnj0pdvm28pxdimxlj0d36ks3xl0rf",
+        "rev": "6cf6b587b575493e7718bf08b209013d7dcf4d58",
+        "sha256": "0666ayxazbphjn5xcrczv8m7k2q62k224fvf0kz1lx9qjn93wkvr",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/a3dd580adc46628dd0c970037b6c87cff1251af5.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/6cf6b587b575493e7718bf08b209013d7dcf4d58.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -17,10 +17,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "e82eb322ea32a747a51c431d7787221bcc6d9038",
-        "sha256": "1fy4dcr05d80diwlxmh42xnjm5ki1pkbky38smvlqjaky2y2f71f",
+        "rev": "89ae775e9dfc2571f912156dd2f8627e14d4d507",
+        "sha256": "0ssw6byyn79fpyzswi28s5b85x66xh4xsfhmcfl5mkdxxpmyy0ns",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/e82eb322ea32a747a51c431d7787221bcc6d9038.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/89ae775e9dfc2571f912156dd2f8627e14d4d507.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -48,15 +48,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "slippi": {
-        "branch": "feature/nixos-support",
+        "branch": "slippi",
         "description": null,
         "homepage": null,
         "owner": "djanatyn",
         "repo": "Ishiiruka",
-        "rev": "c154ef798babc8f2413f8b4983640fa246c87176",
-        "sha256": "1kpgwgvfypzzlmyk2m02927v35axc1dx0352bzn1hhfldjv1v0f8",
+        "rev": "dd963a93b52411ffbacd518811170c498d902b67",
+        "sha256": "108iifgb810yc9p28y008mfjncsycghy7yl1y6f8jbfsa4lca1mk",
         "type": "tarball",
-        "url": "https://github.com/djanatyn/Ishiiruka/archive/c154ef798babc8f2413f8b4983640fa246c87176.tar.gz",
+        "url": "https://github.com/djanatyn/Ishiiruka/archive/dd963a93b52411ffbacd518811170c498d902b67.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
