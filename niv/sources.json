@@ -53,10 +53,10 @@
         "homepage": null,
         "owner": "djanatyn",
         "repo": "Ishiiruka",
-        "rev": "dd963a93b52411ffbacd518811170c498d902b67",
-        "sha256": "108iifgb810yc9p28y008mfjncsycghy7yl1y6f8jbfsa4lca1mk",
+        "rev": "c154ef798babc8f2413f8b4983640fa246c87176",
+        "sha256": "1kpgwgvfypzzlmyk2m02927v35axc1dx0352bzn1hhfldjv1v0f8",
         "type": "tarball",
-        "url": "https://github.com/djanatyn/Ishiiruka/archive/dd963a93b52411ffbacd518811170c498d902b67.tar.gz",
+        "url": "https://github.com/djanatyn/Ishiiruka/archive/c154ef798babc8f2413f8b4983640fa246c87176.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
