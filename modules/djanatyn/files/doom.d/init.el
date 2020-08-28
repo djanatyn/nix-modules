@@ -1,6 +1,3 @@
-;;; init.el -*- lexical-binding: t; -*-
-;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
-
 (doom!
  :checkers spell
 
@@ -28,10 +25,6 @@
 
  :email notmuch
 
- :app
- (rss +org)
+ :app (rss +org) irc
 
- :collab
-
- :config
- (default +bindings +snippets +evil-commands))
+ :config (default +bindings +snippets +evil-commands))
