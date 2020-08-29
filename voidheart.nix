@@ -376,6 +376,7 @@ in {
     cloc
     tokei
     hyperfine
+    entr
 
     # haskell
     stack
