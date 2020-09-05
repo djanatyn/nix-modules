@@ -1,7 +1,7 @@
 (doom!
  :checkers spell
 
- :feature spellcheck (syntax-checker +childframe) workspaces
+ :feature (syntax-checker +childframe) workspaces
 
  :completion (company +auto) (helm +fuzzy)
 
