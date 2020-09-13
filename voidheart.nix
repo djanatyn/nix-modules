@@ -303,11 +303,15 @@ in {
     tmux
     tmuxp
     htop
+    glances
     ytop
     bat
     xmlstarlet
     jq
     yq
+
+    # study
+    zotero
 
     # network
     mtr
@@ -316,6 +320,7 @@ in {
 
     # virtualisation
     qemu_kvm
+    qemu
 
     # java
     openjdk11
@@ -382,12 +387,17 @@ in {
     stack
     ormolu
 
+    # patching
+    flips
+    xdelta
+
     # secrets
     gnupg
     diceware
     pass
     sshpass
     keybase
+    oathToolkit
 
     # ssh
     assh
@@ -396,7 +406,6 @@ in {
     # games
     wine
     xonotic
-    flips
     runelite
     retroarch
     sgtpuzzles
