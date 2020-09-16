@@ -70,6 +70,9 @@ in {
     dhall-bash
     dhall-json
 
+    # editor
+    emacs26-nox
+
     # development
     entr
     clang
