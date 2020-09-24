@@ -82,8 +82,12 @@ in with pkgs; {
         };
         "sr.ht" = {
           secret-key = lib.fileContents /var/src/secrets/sourcehut/secret-key;
+          network-key = lib.fileContents /var/src/secrets/sourcehut/network-key;
+
+          owner-name = "Jonathan Strickland";
+          owner-email = "djanatyn@gmail.com";
         };
-        "meta.sr.ht" = { origin = "vessel.voidheart.io"; };
+        "meta.sr.ht" = { origin = "http://vessel.voidheart.io"; };
       };
     };
 
@@ -116,8 +120,21 @@ in with pkgs; {
   virtualisation.docker.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
-  environment.systemPackages =
-    [ zsh openjdk8 consul nomad vim exa git python tmux fzy zip unzip ];
+  environment.systemPackages = [
+    zsh
+    openjdk8
+    consul
+    nomad
+    vim
+    exa
+    git
+    python
+    tmux
+    fzy
+    zip
+    unzip
+    starship
+  ];
 
   fileSystems = {
     "/" = {
