@@ -11,8 +11,6 @@ in with pkgs; {
   imports = [
     "${sources.nixpkgs}/nixos/modules/profiles/qemu-guest.nix"
     "${sources.nixpkgs}/nixos/modules/services/misc/sourcehut"
-    <modules/consul>
-    <modules/nomad>
     <modules/monitoring>
     <modules/djanatyn>
     <modules/pri>
