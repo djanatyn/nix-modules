@@ -35,6 +35,7 @@ source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug 'chrissicool/zsh-256color'
+zplug 'zdharma/history-search-multi-word'
 zplug 'zsh-users/zsh-autosuggestions', defer:2
 zplug 'zdharma/fast-syntax-highlighting', defer:2
 zplug 'aperezdc/zsh-fzy'
