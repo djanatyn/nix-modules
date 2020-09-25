@@ -14,7 +14,7 @@ in {
     "${checkout}/modules/djanatyn"
   ];
 
-  macos.trustedUsers = "jonathanstrickland";
+  macos.trustedUsers = [ "jonathanstrickland" ];
   djanatyn = {
     username = "jonathanstrickland";
     groups = [ "wheel" "docker" ];
@@ -27,6 +27,9 @@ in {
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
   environment.variables.EDITOR = "emacsclient";
+
+  # services
+  services.nix-daemon.enable = true;
 
   environment.systemPackages = with pkgs; [
     # system utilities
@@ -47,7 +50,6 @@ in {
     fzf
 
     # shell
-    zsh
     tmux
     tmuxp
 
