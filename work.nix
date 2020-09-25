@@ -51,9 +51,6 @@ in {
     isync
     notmuch
 
-    # nushell???
-    nushell
-
     # searching
     fd
     sd
