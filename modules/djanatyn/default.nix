@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 with lib;
-let cfg = config.djanatyn;
+let
+  cfg = config.djanatyn;
+  tmux = import ./tmux.nix;
 in {
   options = {
     djanatyn.groups = mkOption {
@@ -49,88 +51,9 @@ in {
         ".doom.d".source = ./files/doom.d;
 
         # tmuxp
-        ".tmuxp/pivotal.yaml".text = lib.generators.toYAML { } {
-          session_name = "pivotal";
-          windows = [
-            {
-              window_name = "control-plane";
-              start_directory = "~/repos/cf-automation";
-              panes = [{
-                shell_command = [
-                  "source ./targets/control-plane/ops-manager-credhub-bosh && bosh vms"
-                ];
-              }];
-            }
-            {
-              window_name = "canary";
-              start_directory = "~/repos/cf-automation";
-              panes = [{
-                shell_command = [
-                  "source ./targets/sandbox/ops-manager-credhub-bosh && bosh vms"
-                ];
-              }];
-            }
-            {
-              window_name = "nonprod";
-              start_directory = "~/repos/cf-automation";
-              panes = [{
-                shell_command = [
-                  "source ./targets/non-prod/ops-manager-credhub-bosh && bosh vms"
-                ];
-              }];
-            }
-            {
-              window_name = "production";
-              start_directory = "~/repos/cf-automation";
-              panes = [{
-                shell_command = [
-                  "source ./targets/production/ops-manager-credhub-bosh && bosh vms"
-                ];
-              }];
-            }
-          ];
-        };
-
-        ".tmuxp/work.yaml".text = lib.generators.toYAML { } {
-          session_name = "work";
-          windows = [
-            {
-              window_name = "nixpkgs";
-              start_directory = "~/repos/nixpkgs";
-              panes = [ "blank" ];
-            }
-            {
-              window_name = "nix-modules";
-              start_directory = "~/repos/nix-modules";
-              panes = [ "blank" ];
-            }
-            {
-              window_name = "ansible-inventory";
-              start_directory = "~/repos/ansible-inventory";
-              panes = [ "blank" ];
-            }
-            {
-              window_name = "ansible-playbooks";
-              start_directory = "~/repos/ansible-playbooks";
-              panes = [ "blank" ];
-            }
-          ];
-        };
-        ".tmuxp/play.yaml".text = lib.generators.toYAML { } {
-          session_name = "play";
-          windows = [
-            {
-              window_name = "nixpkgs";
-              start_directory = "~/repos/nixpkgs";
-              panes = [ "blank" ];
-            }
-            {
-              window_name = "nix-modules";
-              start_directory = "~/repos/nix-modules";
-              panes = [ "blank" ];
-            }
-          ];
-        };
+        ".tmuxp/pivotal.yaml".text = lib.generators.toYAML { } tmux.pivotal;
+        ".tmuxp/nix.yaml".text = lib.generators.toYAML { } tmux.nix;
+        ".tmuxp/ansible.yaml".text = lib.generators.toYAML { } tmux.ansible;
       } // optionalAttrs (cfg.email.mbsync.enable) {
         ".mbsyncrc".text = fileContents ./files/mbsyncrc;
         ".davmail.properties".text = fileContents ./files/davmail.properties;
