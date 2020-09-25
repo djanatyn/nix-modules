@@ -361,8 +361,12 @@ in {
     # media
     mpv
     spotify
+    ncspot
+    ncmpcpp
     pavucontrol
     pulsemixer
+    alsaUtils
+    clerk
     jftui
 
     # editor
@@ -373,7 +377,6 @@ in {
     ripgrep
     fd
     sd
-    silver-searcher
 
     # filesystem
     du-dust
