@@ -95,6 +95,5 @@ if [ -f '/Users/stricklanj/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/stri
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc'; fi
 
-# blast off
-export RPS1=
-eval "$(starship init zsh)"
+# powerline10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

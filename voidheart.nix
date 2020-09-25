@@ -309,7 +309,6 @@ in {
     nushell
     zsh
     fzf
-    starship
     exa
     procs
     tmux
