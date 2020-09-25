@@ -1,7 +1,7 @@
 { config, ... }:
 let
   sources = import ./niv/sources.nix { };
-  checkout = "/Users/stricklanj/repos/nix-modules";
+  checkout = "/Users/jonathanstrickland/repos/nix-modules";
 
   pkgs = import sources.nixpkgs {
     overlays = [ (import sources.nixpkgs-mozilla) ];
