@@ -1,9 +1,10 @@
 { config, ... }:
 let
   sources = import ./niv/sources.nix;
+  overlay = import ./overlay.nix { inherit sources; };
 
   pkgs = import sources.nixpkgs {
-    overlays = [ (import sources.nixpkgs-mozilla) ];
+    overlays = [ overlay.vessel (import sources.nixpkgs-mozilla) ];
     config = { allowUnfree = true; };
   };
 in with pkgs; {
@@ -12,8 +13,6 @@ in with pkgs; {
     "${sources.nixpkgs}/nixos/modules/services/misc/sourcehut"
     <modules/consul>
     <modules/nomad>
-    <modules/terraria>
-    <modules/factorio>
     <modules/monitoring>
     <modules/djanatyn>
     <modules/pri>
@@ -70,7 +69,10 @@ in with pkgs; {
   };
 
   services = {
-    voidheart.factorio.enable = true;
+    factorio = {
+      enable = true;
+      password = lib.fileContents /var/src/secrets/factorio/password;
+    };
 
     sourcehut = {
       enable = true;

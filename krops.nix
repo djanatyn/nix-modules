@@ -12,6 +12,7 @@ let
       nixos-config.file = toString ./vessel.nix;
       modules.file = toString ./modules;
       niv.file = toString ./niv;
+      "overlay.nix".file = toString ./overlay.nix;
 
       secrets.pass = {
         dir = toString /var/secrets;

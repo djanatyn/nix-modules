@@ -1,4 +1,31 @@
 { sources }: {
+  vessel = self: super:
+    with super; {
+      factorio = pkgs.factorio-headless-experimental.overrideAttrs
+        (oldAttrs: rec {
+          name = "factorio-${releaseType}-${version}";
+          version = "1.0.0";
+          releaseType = "headless";
+          arch = "linux64";
+
+          src = pkgs.fetchurl {
+            name = "factorio-${releaseType}_${arch}-${version}.tar.xz";
+            url =
+              "https://www.factorio.com/get-download/${version}/${releaseType}/${arch}";
+            sha256 = "0r0lplns8nxna2viv8qyx9mp4cckdvx6k20w2g2fwnj3jjmf3nc1";
+          };
+        });
+      terraria-server = super.terraria-server.overrideAttrs (oldAttrs: rec {
+        version = "1.4.0.5";
+
+        src = pkgs.fetchurl {
+          url =
+            "https://terraria.org/system/dedicated_servers/archives/000/000/039/original/terraria-server-1405.zip";
+          sha256 = "1bvcafpjxp7ddrbhm3z0xamgi71ymbi41dlx990daz0b5kbdir8y";
+        };
+      });
+    };
+
   voidheart = self: super:
     with super; {
       retroarch = retroarch.override {
