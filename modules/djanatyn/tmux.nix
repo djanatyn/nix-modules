@@ -30,7 +30,7 @@ in {
     windows = [
       (windows.cf-window "control-plane")
       (windows.cf-window "sandbox")
-      (windows.cf-window "nonprod")
+      (windows.cf-window "non-prod")
       (windows.cf-window "production")
     ];
   };
