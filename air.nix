@@ -1,24 +1,28 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "8bbefa77f7e95c80005350aeac6fe425ce47c288";
-    ref = "master";
+  sources = import ./niv/sources.nix { };
+  checkout = "/Users/stricklanj/repos/nix-modules";
+
+  pkgs = import sources.nixpkgs {
+    overlays = [ (import sources.nixpkgs-mozilla) ];
+    config = { allowUnfree = true; };
   };
 in {
   imports = [
-    (import "${home-manager}/nix-darwin")
-    ./modules/dotfiles
-    ./modules/macos
-    ./modules/djanatyn
+    (import "${sources.home-manager}/nix-darwin")
+    "${checkout}/modules/macos"
+    "${checkout}/modules/djanatyn"
   ];
 
-  dotfiles.enable = true;
-  dotfiles.username = "jonathanstrickland";
-  macos.username = "jonathanstrickland";
-  djanatyn.username = "jonathanstrickland";
+  macos.trustedUsers = "jonathanstrickland";
+  djanatyn = {
+    username = "jonathanstrickland";
+    groups = [ "wheel" "docker" ];
+    email.address = "djanatyn@gmail.com";
+  };
 
-  djanatyn.groups = [ "wheel" "docker" ];
+  # darwin nix
+  environment.darwinConfig = "${checkout}/air.nix";
 
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
@@ -31,9 +35,15 @@ in {
     jq
     tree
     moreutils
+    procs
+
+    # filesystem
+    du-dust
 
     # searching
-    ag
+    fd
+    sd
+    ripgrep
     fzf
 
     # shell
