@@ -92,7 +92,7 @@ in {
         };
 
         ".tmuxp/work.yaml".text = lib.generators.toYAML { } {
-          session_name = "workin'";
+          session_name = "work";
           windows = [
             {
               window_name = "nixpkgs";
