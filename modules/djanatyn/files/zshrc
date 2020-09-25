@@ -43,9 +43,11 @@ source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug 'sharat87/zsh-vim-mode'
+zplug 'zdharma/history-search-multi-word'
+zplug 'romkatv/powerlevel10k', as:theme, depth:1
+zplug 'Aloxaf/fzf-tab', defer:2
 zplug 'zsh-users/zsh-autosuggestions', defer:3
 zplug 'zdharma/fast-syntax-highlighting', defer:3
-zplug 'Aloxaf/fzf-tab', defer:2
 
 if ! zplug check; then
     zplug install

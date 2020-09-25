@@ -34,12 +34,11 @@ source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-zplug 'chrissicool/zsh-256color'
 zplug 'zdharma/history-search-multi-word'
-zplug 'zsh-users/zsh-autosuggestions', defer:2
-zplug 'zdharma/fast-syntax-highlighting', defer:2
-zplug 'aperezdc/zsh-fzy'
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug 'romkatv/powerlevel10k', as:theme, depth:1
+zplug 'Aloxaf/fzf-tab', defer:2
+zplug 'zsh-users/zsh-autosuggestions', defer:3
+zplug 'zdharma/fast-syntax-highlighting', defer:3
 
 if ! zplug check; then
     zplug install
