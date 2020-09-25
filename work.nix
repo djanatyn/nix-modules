@@ -99,6 +99,9 @@ in {
     # mail
     davmail
 
+    # jira
+    go-jira
+
     # nix
     nixfmt
     nix-prefetch-scripts
