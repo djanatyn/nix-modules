@@ -208,6 +208,10 @@ with pkgs; {
 
     # debug
     gdb
+  ];
+
+  hacking = [
+    # reverse engineering
     radare2
     radare2-cutter
   ];
@@ -247,8 +251,8 @@ with pkgs; {
 
   games = if (pkgs.stdenv.system == "x86_64-darwin") then
     [
-      # just puzzles
-      sgtpuzzles
+      # tales of middle earth
+      tome2
     ]
   else [
     # steam + lutris

@@ -1,12 +1,10 @@
 { config, ... }:
 let
-  sources = import ./niv/sources.nix { };
-  checkout = "/Users/jonathanstrickland/repos/nix-modules";
+  sources = import ./nix/sources.nix { };
+  packages = import ./pkgs/air.nix { inherit config sources; };
+  inherit (packages) pkgs;
 
-  pkgs = import sources.nixpkgs {
-    overlays = [ (import sources.nixpkgs-mozilla) ];
-    config = { allowUnfree = true; };
-  };
+  checkout = "/Users/jonathanstrickland/repos/nix-modules";
 in {
   imports = [
     (import "${sources.home-manager}/nix-darwin")
@@ -31,51 +29,5 @@ in {
   # services
   services.nix-daemon.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    # system utilities
-    bat
-    exa
-    jq
-    tree
-    moreutils
-    procs
-
-    # filesystem
-    du-dust
-
-    # searching
-    fd
-    sd
-    ripgrep
-    fzf
-
-    # shell
-    tmux
-    tmuxp
-
-    # configuration
-    chezmoi
-
-    # development
-    entr
-    clang
-    cloc
-    tig
-
-    # secrets
-    gnupg
-    pass
-    pwgen
-    diceware
-
-    # ssh
-    assh
-    sshpass
-
-    # nix
-    nixfmt
-
-    # music
-    ncmpcpp
-  ];
+  environment.systemPackages = packages.toInstall;
 }
