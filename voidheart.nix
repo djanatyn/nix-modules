@@ -174,18 +174,6 @@ in {
       ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
     '';
 
-    mpd = {
-      enable = true;
-      startWhenNeeded = true;
-
-      extraConfig = ''
-        audio_output {
-          type "alsa"
-          name "MPD"
-        }
-      '';
-    };
-
     jellyfin.enable = true;
     openssh.enable = true;
     lorri.enable = true;
@@ -296,11 +284,12 @@ in {
     mpv
     spotify
     ncspot
+    mpd
+    mpdas
     ncmpcpp
     pavucontrol
     pulsemixer
     alsaUtils
-    clerk
     jftui
 
     # editor
