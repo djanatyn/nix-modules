@@ -1,6 +1,5 @@
-{ config, ... }:
+{ config, sources, ... }:
 let
-  sources = import ./nix/sources.nix { };
   overlay = import ./overlay.nix { inherit sources; };
 
   pkgs = import sources.nixpkgs {

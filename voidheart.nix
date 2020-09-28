@@ -1,7 +1,7 @@
 { config, ... }:
 let
-  sources = import ./pkgs/nix/sources.nix { };
-  packages = import ./pkgs/voidheart.nix { inherit config; };
+  sources = import ./nix/sources.nix { };
+  packages = import ./pkgs/voidheart.nix { inherit config sources; };
   inherit (packages) pkgs;
 in {
   imports = [
