@@ -24,6 +24,7 @@ in {
 
       # creation
       terminal
+      organization
       tmux
       editor
       transform
