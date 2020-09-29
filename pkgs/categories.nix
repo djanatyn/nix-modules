@@ -6,6 +6,7 @@ with pkgs; {
     which
     file
     binutils
+    moreutils
 
     # classics get an upgrade
     htop
