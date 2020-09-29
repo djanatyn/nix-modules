@@ -85,6 +85,9 @@ with pkgs; {
 
     # when authorized_keys won't work
     sshpass
+
+    # tunneling
+    sshuttle
   ];
 
   patches = [
