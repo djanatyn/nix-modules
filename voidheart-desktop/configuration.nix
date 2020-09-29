@@ -1,15 +1,19 @@
 { config, ... }:
 let
-  sources = import ./nix/sources.nix { };
-  packages = import ./pkgs/voidheart.nix { inherit config sources; };
+  checkout = "/home/djanatyn/repos/nix-modules";
+
+  sources = import "${checkout}/nix/sources.nix" { };
+  packages =
+    import "${checkout}/pkgs/voidheart.nix" { inherit config sources; };
+
   inherit (packages) pkgs;
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
     (import "${sources.home-manager}/nixos")
-    ./modules/djanatyn
-    ./modules/pri
-    ./modules/monitoring
+    "${checkout}/modules/djanatyn"
+    "${checkout}/modules/pri"
+    "${checkout}/modules/monitoring"
   ];
 
   # (don't update unless you know what you're doing)

@@ -61,7 +61,7 @@
         EOF
 
         exec nixos-rebuild \
-          -I "nixos-config=''${HOME}/repos/nix-modules/voidheart.nix" \
+          -I "nixos-config=''${HOME}/repos/nix-modules/voidheart-desktop/configuration.nix" \
           "$@"
       '';
 
