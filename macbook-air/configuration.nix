@@ -1,10 +1,11 @@
 { config, ... }:
 let
-  sources = import ./nix/sources.nix { };
-  packages = import ./pkgs/air.nix { inherit config sources; };
-  inherit (packages) pkgs;
-
   checkout = "/Users/jonathanstrickland/repos/nix-modules";
+
+  sources = import "${checkout}/nix/sources.nix" { };
+  packages = import ./pkgs.nix { inherit config sources checkout; };
+
+  inherit (packages) pkgs;
 in {
   imports = [
     (import "${sources.home-manager}/nix-darwin")
