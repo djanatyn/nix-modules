@@ -329,5 +329,8 @@ with pkgs; {
     # ansible...
     ansible
     ansible-lint
+
+    # jira!
+    go-jira
   ];
 }
