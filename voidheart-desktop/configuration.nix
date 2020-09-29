@@ -3,8 +3,7 @@ let
   checkout = "/home/djanatyn/repos/nix-modules";
 
   sources = import "${checkout}/nix/sources.nix" { };
-  packages =
-    import "${checkout}/pkgs/voidheart.nix" { inherit config sources; };
+  packages = import ./pkgs.nix { inherit config sources checkout; };
 
   inherit (packages) pkgs;
 in {

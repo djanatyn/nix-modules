@@ -1,6 +1,6 @@
-{ config, sources, ... }:
+{ config, sources, checkout, ... }:
 let
-  overlay = import ./overlay.nix { inherit sources; };
+  overlay = import "${checkout}/pkgs/overlay.nix" { inherit sources; };
 
   pkgs = import sources.nixpkgs {
     overlays = [ overlay.voidheart (import sources.nixpkgs-mozilla) ];
@@ -13,7 +13,7 @@ let
     };
   };
 
-  categories = import ./categories.nix { inherit pkgs; };
+  categories = import "${checkout}/pkgs/categories.nix" { inherit pkgs; };
 in {
   inherit pkgs categories;
   toInstall = with categories;
