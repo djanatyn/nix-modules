@@ -58,6 +58,9 @@ with pkgs; {
 
     # build binaries
     patchelf
+
+    # home-manager!
+    home-manager
   ];
 
   secrets = [
