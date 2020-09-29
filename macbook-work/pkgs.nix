@@ -16,7 +16,7 @@ in {
       terminal
       tmux
       editor
-      transform
+      (pkgs.lib.remove pkgs.yq transform)
       git
       development
 
