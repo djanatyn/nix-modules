@@ -36,7 +36,6 @@ in {
       # internet
       network
       ssh
-      torrents
       mail
 
       # cloud
