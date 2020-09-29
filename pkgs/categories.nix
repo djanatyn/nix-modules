@@ -336,4 +336,10 @@ with pkgs; {
     # jira!
     go-jira
   ];
+
+  organization = [
+    # task warrior + shell
+    taskwarrior
+    tasksh
+  ];
 }
