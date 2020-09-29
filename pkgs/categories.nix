@@ -62,6 +62,9 @@ with pkgs; {
 
     # home-manager!
     home-manager
+
+    # version management
+    niv
   ];
 
   secrets = [
