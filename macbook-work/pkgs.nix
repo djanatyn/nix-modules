@@ -11,6 +11,7 @@ in {
       # work macbook
       system
       work
+      organization
 
       # creation
       terminal
@@ -46,5 +47,8 @@ in {
 
       # audio
       music
+
+      # tools
+      hashicorp
     ];
 }
