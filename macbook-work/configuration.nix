@@ -10,20 +10,12 @@ in {
   imports = [
     (import "${sources.home-manager}/nix-darwin")
     "${checkout}/modules/macos"
-    "${checkout}/modules/djanatyn"
   ];
 
   macos.trustedUsers = [ "stricklanj" ];
-  djanatyn = {
-    username = "stricklanj";
-    email = {
-      address = "stricklanj@ae.com";
-      mbsync.enable = true;
-    };
-  };
 
   # darwin nix
-  environment.darwinConfig = "${checkout}/work-macbook/configuration.nix";
+  environment.darwinConfig = "${checkout}/macbook-work/configuration.nix";
 
   # prefer zsh + emacs
   environment.loginShell = pkgs.zsh;
