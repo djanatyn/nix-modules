@@ -311,6 +311,7 @@ with pkgs; {
 
     # screenshots
     maim
+    flameshot
 
     # clipboard
     xclip
@@ -344,5 +345,8 @@ with pkgs; {
     # task warrior + shell
     taskwarrior
     tasksh
+
+    # timetracking
+    wakatime
   ];
 }
