@@ -1,4 +1,7 @@
-let checkout = "/home/djanatyn/repos/nix-modules";
+let
+  checkout = "/home/djanatyn/repos/nix-modules";
+  sources = import "${checkout}/nix/sources.nix" { };
+  pkgs = import sources.nixpkgs { config = { allowUnfree = true; }; };
 in {
   imports = [ "${checkout}/home-manager/djanatyn" ];
 
