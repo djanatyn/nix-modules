@@ -118,6 +118,9 @@ with pkgs; {
     # checking space
     du-dust
 
+    # better df
+    duf
+
     # managing files
     nnn
   ];
