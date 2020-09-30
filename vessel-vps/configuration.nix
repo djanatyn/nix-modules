@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  sources = import ./niv/sources.nix;
+  sources = import ./nix/sources.nix;
   overlay = import ./overlay.nix { inherit sources; };
 
   pkgs = import sources.nixpkgs {
@@ -12,7 +12,6 @@ in with pkgs; {
     "${sources.nixpkgs}/nixos/modules/profiles/qemu-guest.nix"
     "${sources.nixpkgs}/nixos/modules/services/misc/sourcehut"
     <modules/monitoring>
-    <modules/djanatyn>
     <modules/pri>
     (import "${sources.home-manager}/nixos")
   ];

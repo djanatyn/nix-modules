@@ -9,10 +9,11 @@ let
 
   sources = {
     vessel = lib.evalSource [{
-      nixos-config.file = toString ./vessel.nix;
-      modules.file = toString ./modules;
-      niv.file = toString ./niv;
-      "overlay.nix".file = toString ./overlay.nix;
+      nixos-config.file = toString ./configuration.nix;
+      modules.file = toString ../modules;
+      home-manager.file = toString ../home-manager;
+      pkgs.file = toString ../pkgs;
+      nix.file = toString ../nix;
 
       secrets.pass = {
         dir = toString /var/secrets;
