@@ -118,12 +118,9 @@ with pkgs; {
     # checking space
     du-dust
 
-    # better df
-    duf
-
     # managing files
     nnn
-  ];
+  ] ++ lib.optional (pkgs.stdenv.system != "x86_64-darwin") duf;
 
   chat = [
     # chat clients
