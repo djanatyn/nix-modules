@@ -22,7 +22,6 @@ in {
   time.timeZone = "America/New_York";
 
   # voidheart-specific user config
-  djanatyn.enableGpgAgent = true;
   users = {
     users = {
       pripripripripri.openssh.authorizedKeys.keys = [
