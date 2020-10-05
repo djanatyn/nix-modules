@@ -6,3 +6,4 @@
 (package! leuven-theme)
 (package! symon)
 (package! pinentry)
+(package! wakatime-mode)
