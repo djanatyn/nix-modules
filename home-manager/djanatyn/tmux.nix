@@ -15,7 +15,7 @@ let
       }];
     };
 
-    nix = [ (gitWindow "nixpkgs") (gitWindow "nix-modules") ];
+    nix = [ (gitWindow "nix-modules") ];
     ansible =
       [ (gitWindow "ansible-inventory") (gitWindow "ansible-playbooks") ];
   };
@@ -23,6 +23,11 @@ in {
   ansible = {
     session_name = "ansible";
     windows = windows.ansible;
+  };
+
+  nix = {
+    session_name = "nix";
+    windows = windows.nix;
   };
 
   pivotal = {
@@ -35,16 +40,4 @@ in {
     ];
   };
 
-  nix = {
-    session_name = "nix";
-    windows = builtins.concatLists [
-      windows.nix
-      [{
-        window_name = "cordless";
-        start_directory = "~/repos/cordless";
-        panes =
-          [{ shell_command = [ "/home/djanatyn/repos/cordless/cordless" ]; }];
-      }]
-    ];
-  };
 }
