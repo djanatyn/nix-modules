@@ -1,3 +1,10 @@
+;; doom modules
+;; ============
+(after! doom
+  (setq display-line-numbers-type 'relative)
+  (doom/set-frame-opacity 90)
+  (setq doom-theme 'doom-one))
+
 (after! org
   (setq org-agenda-files
         '("~/repos/org")))
@@ -5,50 +12,28 @@
 (after! term
   (setq multi-term-program "/bin/bash"))
 
-(setq doom-line-numbers-style 'relative)
+(after! notmuch
+  (setq +notmuch-sync-backend 'mbsync))
 
-;; theming
-;; (require 'leuven-theme)
-(setq doom-theme 'doom-one)
+(after! haskell
+  (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode)))
 
-;; use terminus font
-;; (setq doom-font "xft:-xos4-Terminess Powerline-normal-normal-normal-*-16-*-*-*-c-80-iso10646-1")
+;; individual packages
+;; ===================
+(use-package! symon
+  :init (symon-mode))
 
-;; transparent background
-(doom/set-frame-opacity 90)
+(use-package! dante
+  :init (setq dante-methods '(stack snack nix)))
 
-;; symon
-(require 'symon)
-(symon-mode)
+(use-package! elfeed
+  :init (setq rmh-elfeed-org-files (list "~/.feeds.org")))
 
-;; ormolu
-(set-formatter! 'ormolu "ormolu" :modes '(haskell-mode))
+(use-package! pinentry
+  :init (setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
+  :config (pinentry-start))
 
-;; dante
-(setq dante-methods '(stack snack nix))
-
-;; fix ssh inside tmux
-(defun fix-ssh ()
+;; set ssh agent socket to gpg agent
+(defun gpg-ssh ()
   (interactive)
   (setenv "SSH_AUTH_SOCK" (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
-(fix-ssh)
-
-;; elfeed
-(setq rmh-elfeed-org-files (list "~/.feeds.org"))
-
-;; pinentry
-(setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
-(pinentry-start)
-
-;; email
-(setq +notmuch-sync-backend 'mbsync)
-
-;; irc
-(after! circe
-  (set-irc-server! "chat.freenode.net"
-    `(:tls t
-      :port 6697
-      :nick "djanatyn"
-      :sasl-username ,(+pass-get-user "irc/freenode.net")
-      :sasl-password (lambda (&rest _),(+pass-get-secret "irc/freenode.net"))
-      :channels ("#jbopre" "#emacs"))))
