@@ -33,6 +33,9 @@
   :init (setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
   :config (pinentry-start))
 
+(use-package! wakatime-mode
+  :config (global-wakatime-mode))
+
 ;; set ssh agent socket to gpg agent
 (defun gpg-ssh ()
   (interactive)
