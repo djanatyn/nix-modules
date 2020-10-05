@@ -101,4 +101,11 @@ if [ -f '/Users/stricklanj/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/stri
 if [ -f '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/stricklanj/google-cloud-sdk/completion.zsh.inc'; fi
 
 # powerline10k
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# we use a separate config for ssh clients
+if [[ -f ~/.p10k.zsh ]]; then
+  if [[ -z $SSH_CONNECTION ]]; then
+    source ~/.p10k.zsh
+  else
+    source ~/.p10k.ssh.zsh
+  fi
+fi
