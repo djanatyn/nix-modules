@@ -37,8 +37,6 @@ in {
     } // optionalAttrs (cfg.email.mbsync.enable) {
       ".mbsyncrc".text = fileContents ./files/.mbsyncrc;
       ".davmail.properties".text = fileContents ./files/.davmail.properties;
-    } // optionalAttrs (system == "x86_64-linux") {
-      ".Xresources".text = fileContents ./files/.Xresources;
     };
 
     xresources = {
