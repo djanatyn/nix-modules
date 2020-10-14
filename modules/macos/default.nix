@@ -7,7 +7,35 @@ in {
   };
 
   config = {
-    services = { nix-daemon.enable = true; };
+    services = {
+      nix-daemon.enable = true;
+      yabai = {
+        enable = true;
+        package = pkgs.yabai;
+        enableScriptingAddition = true;
+
+        config = {
+          focus_follows_mouse = "autoraise";
+          mouse_follows_focus = "on";
+          window_placement = "second_child";
+          window_opacity = "on";
+          window_border = "on";
+          window_border_placement = "inset";
+          window_border_width = 2;
+          window_border_radius = 3;
+          active_window_border_topmost = "off";
+          window_topmost = "on";
+          window_shadow = "float";
+          layout = "bsp";
+          auto_balance = "on";
+          top_padding = 10;
+          bottom_padding = 10;
+          left_padding = 10;
+          right_padding = 10;
+          window_gap = 10;
+        };
+      };
+    };
 
     programs = {
       nix-index.enable = true;
