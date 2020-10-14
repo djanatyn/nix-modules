@@ -98,12 +98,16 @@ in {
 
     pulseaudio = {
       enable = true;
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      package = pkgs.pulseaudioFull;
       support32Bit = true;
       configFile = pkgs.runCommand "default.pa" { } ''
         sed 's/module-udev-detect$/module-udev-detect tsched=0/' \
           ${pkgs.pulseaudio}/etc/pulse/default.pa > $out
       '';
     };
+
+    bluetooth.enable = true;
   };
 
   systemd = {
@@ -171,6 +175,7 @@ in {
     jellyfin.enable = true;
     openssh.enable = true;
     lorri.enable = true;
+    blueman.enable = true;
     flowercluster.monitoring.enable = true;
   };
 
