@@ -23,6 +23,7 @@ in {
 
       # creation
       terminal
+      organization
       tmux
       editor
       (with pkgs; lib.remove yq transform)
