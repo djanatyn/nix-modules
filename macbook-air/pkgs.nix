@@ -3,7 +3,7 @@ let
   overlay = import "${checkout}/pkgs/overlay.nix" { inherit sources; };
 
   pkgs = import sources.nixpkgs {
-    overlays = [ (import sources.nixpkgs-mozilla) ];
+    overlays = [ overlay.macbook (import sources.nixpkgs-mozilla) ];
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
@@ -57,5 +57,8 @@ in {
 
       # audio
       music
+
+      # extras
+      [ pkgs.firefox ]
     ];
 }
