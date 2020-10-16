@@ -119,6 +119,22 @@ in {
     hostName = "voidheart";
     useDHCP = false;
     interfaces.enp5s0.useDHCP = true;
+
+    wireguard.interfaces = {
+      wg0 = {
+        ips = [ "10.100.0.2/24" ];
+
+        privateKeyFile = "/root/nixos/wireguard/private";
+
+        peers = [{
+          publicKey = "YzTaORCrx2VKE0fKgn8DM+ylv5vMWXSILHjgF4M6EjA=";
+          allowedIPs = [ "10.100.0.1" ];
+
+          endpoint = "167.114.113.126:51820";
+          persistentKeepalive = 25;
+        }];
+      };
+    };
   };
 
   virtualisation = {

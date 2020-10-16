@@ -55,6 +55,34 @@ in with pkgs; {
     nameservers = [ "8.8.8.8" ];
     defaultGateway = "167.114.113.1";
 
+    nat = {
+      enable = true;
+      externalInterface = "ens3";
+      internalInterfaces = [ "wg0" ];
+    };
+
+    wireguard.interfaces = {
+      wg0 = {
+        ips = [ "10.100.0.1/24" ];
+
+        listenPort = 51820;
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+        '';
+
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
+        '';
+
+        privateKeyFile = "/var/src/secrets/wireguard/privateKey";
+
+        peers = [{
+          publicKey = "5H7TcLg6gdrtBEeh8PaJmGKN0xOUVQez+GgEi+YMKGI=";
+          allowedIPs = [ "10.100.0.2/32" ];
+        }];
+      };
+    };
+
     interfaces."ens3".ipv4.addresses = [{
       address = "167.114.113.126";
       prefixLength = 24;
@@ -62,8 +90,8 @@ in with pkgs; {
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8888 7777 ];
-      allowedUDPPorts = [ 7777 ];
+      allowedTCPPorts = [ 8888 7777 51820 ];
+      allowedUDPPorts = [ 7777 51820 ];
     };
   };
 
