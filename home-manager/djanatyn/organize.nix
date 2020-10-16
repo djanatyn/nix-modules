@@ -8,20 +8,25 @@ let
 
   layout = [
     {
+      dest = "roms/";
+      extensions = [ "z64" "srm" ];
+    }
+    {
       dest = "archives/";
-      extensions = [ "zip" "gz" "dmg" "pkg" "7z" ];
+      extensions = [ "zip" "gz" "dmg" "pkg" "7z" "xz" "ova" ];
     }
     {
       dest = "media/";
-      extensions = [ "mp4" "mov" "m4v" "avi" "wav" ];
+      extensions = [ "mp4" "ogg" "mp3" "mov" "m4v" "avi" "webm" "wav" ];
     }
     {
       dest = "image/";
-      extensions = [ "gif" "jpg" "jpeg" "png" "svg" "HEIC" "webm" ];
+      extensions = [ "gif" "jpg" "jpeg" "png" "svg" "HEIC" "webp" ];
     }
     {
       dest = "binary/";
-      extensions = [ "app" "deb" "AppImage" "msi" "exe" ];
+      extensions =
+        [ "jar" "apk" "app" "deb" "AppImage" "msi" "exe" "xpi" "dll" ];
     }
     {
       dest = "font/";
@@ -29,7 +34,7 @@ let
     }
     {
       dest = "document/";
-      extensions = [ "txt" "csv" "json" "pdf" "epub" ];
+      extensions = [ "txt" "csv" "json" "pdf" "epub" "xml" "docx" ];
     }
   ];
 in { rules = map (rule [ "$HOME/Downloads" "$HOME/" ]) layout; }
