@@ -1,6 +1,6 @@
 let
-  rule = source: m: {
-    folders = source;
+  rule = sources: m: {
+    folders = sources;
     subfolders = false;
     filters = [{ extension = m.extensions; }];
     actions = [{ move = m.dest; }];
@@ -32,4 +32,4 @@ let
       extensions = [ "txt" "csv" "json" "pdf" "epub" ];
     }
   ];
-in { rules = map (rule "~/Downloads") layout; }
+in { rules = map (rule [ "$HOME/Downloads" "$HOME/" ]) layout; }
