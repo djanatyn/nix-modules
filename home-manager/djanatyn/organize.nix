@@ -1,34 +1,34 @@
 let
   rule = source: m: {
-    folder = source;
+    folders = source;
     subfolders = false;
-    filters = { extension = m.extensions; };
-    actions = { move = m.dest; };
+    filters = [{ extension = m.extensions; }];
+    actions = [{ move = m.dest; }];
   };
 
   layout = [
     {
-      dest = "archives";
+      dest = "archives/";
       extensions = [ "zip" "gz" "dmg" "pkg" "7z" ];
     }
     {
-      dest = "media";
+      dest = "media/";
       extensions = [ "mp4" "mov" "m4v" "avi" "wav" ];
     }
     {
-      dest = "image";
+      dest = "image/";
       extensions = [ "gif" "jpg" "jpeg" "png" "svg" "HEIC" "webm" ];
     }
     {
-      dest = "binary";
+      dest = "binary/";
       extensions = [ "app" "deb" "AppImage" "msi" "exe" ];
     }
     {
-      dest = "font";
+      dest = "font/";
       extensions = [ "ttf" "dfont" ];
     }
     {
-      dest = "document";
+      dest = "document/";
       extensions = [ "txt" "csv" "json" "pdf" "epub" ];
     }
   ];

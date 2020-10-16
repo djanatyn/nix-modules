@@ -6,6 +6,7 @@ let
   cfg = config.djanatyn;
   system = pkgs.stdenv.system;
   tmux = import ./tmux.nix;
+  organize-rules = import ./organize.nix;
 in {
   options.djanatyn = {
     username = mkOption {
@@ -27,17 +28,19 @@ in {
   };
 
   config = {
-    home.file = {
-      ".zshrc".text = fileContents ./files/.zshrc;
-      ".tmux.conf".text = fileContents ./files/.tmux.conf;
-      ".doom.d".source = ./files/.doom.d;
-      ".tmuxp/pivotal.yaml".text = lib.generators.toYAML { } tmux.pivotal;
-      ".tmuxp/nix.yaml".text = lib.generators.toYAML { } tmux.nix;
-      ".tmuxp/ansible.yaml".text = lib.generators.toYAML { } tmux.ansible;
-    } // optionalAttrs (cfg.email.mbsync.enable) {
-      ".mbsyncrc".text = fileContents ./files/.mbsyncrc;
-      ".davmail.properties".text = fileContents ./files/.davmail.properties;
-    };
+    home.file = with generators;
+      {
+        ".zshrc".text = fileContents ./files/.zshrc;
+        ".tmux.conf".text = fileContents ./files/.tmux.conf;
+        ".doom.d".source = ./files/.doom.d;
+        ".config/organize/config.yaml".text = toYAML { } organize-rules;
+        ".tmuxp/pivotal.yaml".text = toYAML { } tmux.pivotal;
+        ".tmuxp/nix.yaml".text = toYAML { } tmux.nix;
+        ".tmuxp/ansible.yaml".text = toYAML { } tmux.ansible;
+      } // optionalAttrs (cfg.email.mbsync.enable) {
+        ".mbsyncrc".text = fileContents ./files/.mbsyncrc;
+        ".davmail.properties".text = fileContents ./files/.davmail.properties;
+      };
 
     xresources = {
       properties = {
