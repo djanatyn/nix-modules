@@ -65,6 +65,9 @@ with pkgs; {
 
     # version management
     niv
+
+    # searching
+    manix
   ];
 
   secrets = [
