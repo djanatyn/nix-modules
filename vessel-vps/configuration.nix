@@ -66,13 +66,6 @@ in with pkgs; {
         ips = [ "10.100.0.1/24" ];
 
         listenPort = 51820;
-        postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
-        '';
-
-        postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o ens3 -j MASQUERADE
-        '';
 
         privateKeyFile = "/var/src/secrets/wireguard/privateKey";
 
