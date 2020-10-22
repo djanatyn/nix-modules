@@ -2,7 +2,11 @@
 let
   overlay = import "${checkout}/pkgs/overlay.nix" { inherit sources; };
 
-  pkgs = import sources.nixpkgs { config = { allowUnfree = true; }; };
+  pkgs = import sources.nixpkgs {
+    overlays = [ overlay.macbook ];
+    config = { allowUnfree = true; };
+  };
+
   categories = import "${checkout}/pkgs/categories.nix" { inherit pkgs; };
 in {
   inherit pkgs categories;
@@ -50,5 +54,8 @@ in {
 
       # tools
       hashicorp
+
+      # extras
+      [ pkgs.firefox ]
     ];
 }
