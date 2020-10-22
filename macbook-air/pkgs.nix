@@ -59,6 +59,6 @@ in {
       music
 
       # extras
-      [ pkgs.firefox ]
+      (with pkgs; [ firefox peaclock pinboard ])
     ];
 }
