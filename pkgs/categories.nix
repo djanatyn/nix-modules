@@ -17,6 +17,7 @@ with pkgs; {
 
     # timer!
     termdown
+    peaclock
   ];
 
   network = [
@@ -48,6 +49,7 @@ with pkgs; {
     jq
     yq
     xmlstarlet
+    zalgo
   ];
 
   nix = [
@@ -192,6 +194,8 @@ with pkgs; {
     # latest firefox
     latest.firefox-nightly-bin
 
+    pinboard
+
     # not everything works in firefox
     chromium
 
@@ -218,6 +222,7 @@ with pkgs; {
 
     # benchmark
     hyperfine
+    rtss
 
     # debug
     gdb
