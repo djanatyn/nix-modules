@@ -71,10 +71,16 @@ in with pkgs; {
 
         privateKeyFile = "/var/src/secrets/wireguard/privateKey";
 
-        peers = [{
-          publicKey = "5H7TcLg6gdrtBEeh8PaJmGKN0xOUVQez+GgEi+YMKGI=";
-          allowedIPs = [ "10.100.0.2/32" ];
-        }];
+        peers = [
+          {
+            publicKey = "5H7TcLg6gdrtBEeh8PaJmGKN0xOUVQez+GgEi+YMKGI=";
+            allowedIPs = [ "10.100.0.2/32" ];
+          }
+          {
+            publicKey = "HOhxP72Br3SDzeX39mBsTsuV1sZ9SNxPjaklxRrQ5Rs=";
+            allowedIPs = [ "10.100.0.3/32" ];
+          }
+        ];
       };
     };
 
@@ -85,12 +91,17 @@ in with pkgs; {
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8888 7777 51820 ];
-      allowedUDPPorts = [ 7777 51820 ];
+      allowedTCPPorts = [ 8888 7777 51820 8080 ];
+      allowedUDPPorts = [ 7777 51820 8080 ];
     };
   };
 
   services = {
+    miniflux = {
+      enable = true;
+      config = { "LISTEN_ADDR" = "10.100.0.1:8080"; };
+    };
+
     factorio = {
       enable = true;
       password = lib.fileContents /var/src/secrets/factorio/password;
