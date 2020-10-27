@@ -251,6 +251,7 @@ with pkgs; {
   git = with gitAndTools; [
     # nicer diffs
     diff-so-fancy
+    delta
 
     # run commit checks, declaratively
     pre-commit
