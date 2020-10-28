@@ -28,9 +28,6 @@ in {
       # discovery
       search
 
-      # learning
-      games
-
       # trust
       secrets
 
@@ -48,9 +45,6 @@ in {
 
       # disk
       filesystem
-
-      # audio
-      music
 
       # tools
       hashicorp
