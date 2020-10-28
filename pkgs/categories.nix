@@ -187,6 +187,7 @@ with pkgs; {
   torrents = [
     # cli client
     rtorrent
+    qbittorrent
   ];
 
   browser = [
