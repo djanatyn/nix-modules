@@ -225,6 +225,9 @@ with pkgs; {
 
     # debug
     gdb
+
+    # showing off
+    silicon
   ];
 
   hacking = [
