@@ -14,8 +14,28 @@ in {
         enable = true;
         package = pkgs.spacebar;
         config = {
+          position = "top";
+          background_color = "0xff202020";
+          foreground_color = "0xffa8a8a8";
+          space_icon_color = "0xff458588";
+          power_icon_color = "0xffcd950c";
+          battery_icon_color = "0xffd75f5f";
+          space_icon_strip = lib.concatStringsSep " " [
+            "one"
+            "two"
+            "three"
+            "four"
+            "five"
+            "six"
+            "seven"
+            "eight"
+            "nine"
+            "ten"
+          ];
+          dnd_icon_color = "0xffa8a8a8";
+          clock_icon_color = "0xffa8a8a8";
           clock_format = "%R";
-          text_font = "Helvetica Neue:Bold:12.0";
+          text_font = "FontAwesome";
         };
       };
 
@@ -26,7 +46,7 @@ in {
 
         config = {
           focus_follows_mouse = "off";
-          mouse_follows_focus = "on";
+          mouse_follows_focus = "off";
           window_placement = "second_child";
           window_opacity = "on";
           window_border = "on";
