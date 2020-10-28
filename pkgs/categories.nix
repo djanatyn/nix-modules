@@ -84,8 +84,7 @@ with pkgs; {
     diceware
 
     # 2FA
-    oathToolkit
-  ];
+  ] ++ (pkgs.lib.optional (pkgs.stdenv.system != "x86_64-darwin") oathToolkit);
 
   ssh = [
     # advanced ssh
