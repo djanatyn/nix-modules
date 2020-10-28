@@ -57,7 +57,6 @@ in {
           normal_window_border_color = "0x00ff8c00";
           active_window_border_topmost = "off";
           window_topmost = "on";
-          window_shadow = "float";
           layout = "bsp";
           auto_balance = "on";
           top_padding = 36;
