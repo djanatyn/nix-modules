@@ -265,6 +265,9 @@ with pkgs; {
     # github
     gist
     hub
+
+    # trimming
+    git-trim
   ];
 
   games = if (pkgs.stdenv.system == "x86_64-darwin") then
