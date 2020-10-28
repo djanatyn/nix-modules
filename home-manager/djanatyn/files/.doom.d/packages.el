@@ -7,3 +7,4 @@
 (package! symon)
 (package! pinentry)
 (package! wakatime-mode)
+(package! magit-delta)

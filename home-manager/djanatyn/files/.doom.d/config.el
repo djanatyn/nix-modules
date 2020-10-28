@@ -18,6 +18,9 @@
 (after! haskell
   (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode)))
 
+(after! magit
+  (magit-delta-mode +1))
+
 ;; individual packages
 ;; ===================
 (use-package! symon
