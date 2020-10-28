@@ -224,6 +224,9 @@ with pkgs; {
     hyperfine
     rtss
 
+    # colors
+    pastel
+
     # debug
     gdb
 
