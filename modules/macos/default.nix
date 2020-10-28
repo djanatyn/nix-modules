@@ -49,9 +49,12 @@ in {
           mouse_follows_focus = "off";
           window_placement = "second_child";
           window_opacity = "on";
+          window_shadow = "on";
           window_border = "on";
           window_border_placement = "inset";
           window_border_width = 2;
+          active_window_border_color = "0x006dda74";
+          normal_window_border_color = "0x00ff8c00";
           active_window_border_topmost = "off";
           window_topmost = "on";
           window_shadow = "float";
