@@ -188,6 +188,9 @@ with pkgs; {
     # cli client
     rtorrent
     qbittorrent
+
+    # straight from the source
+    youtube-dl
   ];
 
   browser = [
