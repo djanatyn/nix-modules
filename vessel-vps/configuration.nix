@@ -80,6 +80,10 @@ in with pkgs; {
             publicKey = "HOhxP72Br3SDzeX39mBsTsuV1sZ9SNxPjaklxRrQ5Rs=";
             allowedIPs = [ "10.100.0.3/32" ];
           }
+          {
+            publicKey = "McJJ4d6OiSGlV2f8GcN4Do/ZmAXf5NsCxjypv9ybjyw=";
+            allowedIPs = [ "10.100.0.4/32" ];
+          }
         ];
       };
     };
