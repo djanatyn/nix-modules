@@ -95,7 +95,7 @@ in with pkgs; {
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 8888 7777 51820 8080 ];
+      allowedTCPPorts = [ 8888 7777 51820 8080 8384 ];
       allowedUDPPorts = [ 7777 51820 8080 ];
     };
   };
@@ -104,6 +104,14 @@ in with pkgs; {
     miniflux = {
       enable = true;
       config = { "LISTEN_ADDR" = "10.100.0.1:8080"; };
+    };
+
+    syncthing = {
+      enable = true;
+      user = "djanatyn";
+      dataDir = "/home/djanatyn/syncthing";
+      configDir = "/home/djanatyn/.config/syncthing";
+      guiAddress = "10.100.0.1:8384";
     };
 
     factorio = {
