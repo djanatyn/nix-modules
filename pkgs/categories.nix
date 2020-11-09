@@ -231,6 +231,7 @@ with pkgs; {
     pastel
 
     # debug
+    hexyl
     gdb
 
     # showing off
