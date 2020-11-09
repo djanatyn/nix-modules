@@ -18,6 +18,9 @@ with pkgs; {
     # timer!
     termdown
     peaclock
+
+    # conversions
+    fend
   ];
 
   network = [
