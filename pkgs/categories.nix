@@ -343,6 +343,9 @@ with pkgs; {
   voidheart = [
     # special voidheart rituals
     ritual
+
+    # podcasts stay here
+    podcast
   ];
 
   hashicorp = [
