@@ -236,6 +236,7 @@ with pkgs; {
 
     # showing off
     silicon
+    asciinema
   ];
 
   hacking = [
