@@ -46,6 +46,7 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'sharat87/zsh-vim-mode'
 zplug 'zdharma/history-search-multi-word'
 zplug 'sobolevn/wakatime-zsh-plugin'
+zplug 'chisui/zsh-nix-shell'
 zplug 'romkatv/powerlevel10k', as:theme, depth:1
 zplug 'Aloxaf/fzf-tab', defer:2
 zplug 'zsh-users/zsh-autosuggestions', defer:3
