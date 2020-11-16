@@ -174,6 +174,15 @@ in {
       package = pkgs.jackett;
     };
 
+    avahi = {
+      enable = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        workstation = true;
+      };
+    };
+
     dnsmasq = {
       enable = true;
       servers = [ "8.8.8.8" ];
