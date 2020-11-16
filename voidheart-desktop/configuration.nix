@@ -123,6 +123,13 @@ in {
 
   networking = {
     hostName = "voidheart";
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 51820 8080 8096 ];
+      allowedUDPPorts = [ 51820 ];
+    };
+
     useDHCP = false;
     interfaces.enp5s0.useDHCP = true;
 
@@ -190,11 +197,6 @@ in {
         strict-order
         no-resolv
         log-queries
-
-        server=/ae.com/192.168.1.108
-        server=/ae-cf.io/192.168.1.108
-
-        address=/work.lan/192.168.1.108
       '';
     };
 
