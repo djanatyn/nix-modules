@@ -7,6 +7,7 @@ with pkgs; {
     file
     binutils
     moreutils
+    pueue
 
     # classics get an upgrade
     htop
@@ -190,7 +191,7 @@ with pkgs; {
   torrents = [
     # cli client
     rtorrent
-    qbittorrent
+    qbittorrent-nox
 
     # straight from the source
     youtube-dl
@@ -200,7 +201,11 @@ with pkgs; {
     # latest firefox
     latest.firefox-nightly-bin
 
+    # bookmarks!
     pinboard
+
+    # contextual browsing!
+    surf
 
     # not everything works in firefox
     chromium
@@ -238,6 +243,7 @@ with pkgs; {
     gdb
 
     # showing off
+    glow
     silicon
     asciinema
   ];
