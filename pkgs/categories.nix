@@ -379,6 +379,7 @@ with pkgs; {
     # task warrior + shell
     taskwarrior
     tasksh
+    tasknc
 
     # timetracking
     wakatime
