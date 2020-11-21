@@ -306,6 +306,7 @@ with pkgs; {
     # melee
     slippi.playback
     slippi.netplay
+    wiimms-iso-tools
 
     # emulation
     retroarch
