@@ -121,6 +121,32 @@ in {
   systemd = {
     coredump.enable = true;
     globalEnvironment = { RADV_PERFTEST = "aco"; };
+
+    services = {
+      "ritual@" = {
+        serviceConfig = { Type = "oneshot"; };
+
+        environment = {
+          ACTION = "%i";
+          NIX_PATH = builtins.concatStringsSep ":" [
+            "/home/djanatyn/.nix-defexpr/channels"
+            "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+            "nixos-config=/home/djanatyn/repos/nix-modules/voidheart-desktop/configuration.nix"
+          ];
+        };
+
+        script = ''
+          cat <<EOF
+          The lantern has been lit, and your summons heeded. A fine stage
+          you chose, this kingdom fallowed by worm and root, perfect earth upon
+          which our Ritual shall take place.
+
+          EOF
+
+          ${config.system.build.nixos-rebuild}/bin/nixos-rebuild "$ACTION"
+        '';
+      };
+    };
   };
 
   networking = {
