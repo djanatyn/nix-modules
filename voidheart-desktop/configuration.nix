@@ -207,6 +207,14 @@ in {
       ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="666", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device" TAG+="uaccess"
     '';
 
+    syncthing = {
+      enable = true;
+      user = "djanatyn";
+      dataDir = "/home/djanatyn/syncthing";
+      configDir = "/home/djanatyn/.config/syncthing";
+      guiAddress = "10.100.0.2:8384";
+    };
+
     jellyfin.enable = true;
     openssh.enable = true;
     lorri.enable = true;
