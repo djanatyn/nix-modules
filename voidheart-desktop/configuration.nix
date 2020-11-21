@@ -212,7 +212,7 @@ in {
       user = "djanatyn";
       dataDir = "/home/djanatyn/syncthing";
       configDir = "/home/djanatyn/.config/syncthing";
-      guiAddress = "10.100.0.2:8384";
+      guiAddress = "0.0.0.0:8384";
     };
 
     jellyfin.enable = true;
