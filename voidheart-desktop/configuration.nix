@@ -40,6 +40,8 @@ in {
           "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIOiCqSWnlyk3Efun+zeqeR9afQ3gwYV0QF2l9Us15F8BnNkEqZMvVYQipZUJKwyV4P8X7yJP+2G/KGVhW5kG+4= flowercluster"
         ];
 
+        shell = "${pkgs.zsh}/bin/zsh";
+
         extraGroups =
           [ "wheel" "networkmanager" "docker" "video" "audio" "adb" ];
       };
