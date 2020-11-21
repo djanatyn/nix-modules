@@ -195,6 +195,7 @@ with pkgs; {
 
     # straight from the source
     youtube-dl
+    ytcc
   ];
 
   browser = [
