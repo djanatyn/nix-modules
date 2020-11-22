@@ -357,6 +357,9 @@ with pkgs; {
 
     # podcasts stay here
     podcast
+
+    # keyboard is configured here
+    qmk_firmware
   ];
 
   hashicorp = [
