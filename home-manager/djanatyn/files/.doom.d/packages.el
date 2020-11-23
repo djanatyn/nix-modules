@@ -8,3 +8,5 @@
 (package! pinentry)
 (package! wakatime-mode)
 (package! magit-delta)
+(package! org-roam)
+(package! org-roam-server)

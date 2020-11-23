@@ -39,6 +39,9 @@
 (use-package! wakatime-mode
   :config (global-wakatime-mode))
 
+(use-package! org-roam
+  :config (setq org-roam-directory "~/org-roam"))
+
 ;; set ssh agent socket to gpg agent
 (defun gpg-ssh ()
   (interactive)
