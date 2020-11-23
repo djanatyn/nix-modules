@@ -172,7 +172,7 @@ with pkgs; {
 
   editor = [
     # emacs + tmux is powerful
-    emacs26-nox
+    emacs27
 
     # best of both worlds
     neovim
