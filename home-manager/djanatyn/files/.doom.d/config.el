@@ -43,6 +43,9 @@
 (use-package! org-roam
   :config (setq org-roam-directory "~/org-roam"))
 
+(use-package! delve-minor-mode
+  :config (add-hook 'org-mode-hook #'delve-minor-mode-maybe-activate))
+
 ;; set ssh agent socket to gpg agent
 (defun gpg-ssh ()
   (interactive)
