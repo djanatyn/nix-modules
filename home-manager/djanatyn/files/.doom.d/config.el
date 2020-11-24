@@ -46,6 +46,8 @@
 (use-package! delve-minor-mode
   :config (add-hook 'org-mode-hook #'delve-minor-mode-maybe-activate))
 
+(use-package! silicon)
+
 ;; set ssh agent socket to gpg agent
 (defun gpg-ssh ()
   (interactive)

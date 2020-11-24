@@ -18,3 +18,6 @@
   (:host github
    :repo "publicimageltd/delve"
    :branch "main"))
+(package! silicon :recipe
+  (:host github
+   :repo "iensu/silicon-el"))
