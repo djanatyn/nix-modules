@@ -11,7 +11,7 @@
         '("~/repos/org")))
 
 (after! term
-  (setq multi-term-program "/bin/bash"))
+  (setq multi-term-program "/run/current-system/sw/bin/bash"))
 
 (after! notmuch
   (setq +notmuch-sync-backend 'mbsync))
