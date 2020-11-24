@@ -3,7 +3,8 @@
 (after! doom
   (setq display-line-numbers-type 'relative)
   (doom/set-frame-opacity 90)
-  (setq doom-theme 'doom-one))
+  (setq doom-theme 'doom-monokai-pro)
+  (setq doom-font (font-spec :family "Hack" :size 12)))
 
 (after! org
   (setq org-agenda-files
