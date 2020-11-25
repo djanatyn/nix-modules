@@ -36,6 +36,7 @@ in {
 
       # learning
       games
+      gameboy
       study
 
       # trust

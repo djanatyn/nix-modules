@@ -387,4 +387,9 @@ with pkgs; {
     # timetracking
     wakatime
   ];
+
+  gameboy = [
+    # assembly
+    rgbds
+  ];
 }
