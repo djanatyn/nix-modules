@@ -133,22 +133,12 @@ in {
             "nixos-config=/var/lib/nix-modules/voidheart-desktop/configuration.nix"
           ];
         };
-
-        script = ''
-          cat <<EOF
-          The lantern has been lit, and your summons heeded. A fine stage
-          you chose, this kingdom fallowed by worm and root, perfect earth upon
-          which our Ritual shall take place.
-
-          EOF
-
-          ${config.system.build.nixos-rebuild}/bin/nixos-rebuild "$ACTION"
-        '';
       };
     };
   };
 
   networking = {
+    resolvconf.useLocalResolver = true;
     hostName = "voidheart";
 
     firewall = {
