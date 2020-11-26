@@ -23,7 +23,7 @@ in {
       default = true;
     };
 
-    pri.keys = mkOptions {
+    pri.keys = mkOption {
       type = types.listOf types.str;
       default = [ ];
     };
