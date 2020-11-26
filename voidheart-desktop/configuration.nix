@@ -129,9 +129,8 @@ in {
         environment = {
           ACTION = "%i";
           NIX_PATH = builtins.concatStringsSep ":" [
-            "/home/djanatyn/.nix-defexpr/channels"
-            "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
-            "nixos-config=/home/djanatyn/repos/nix-modules/voidheart-desktop/configuration.nix"
+            "nixpkgs=/var/lib/nixpkgs"
+            "nixos-config=/var/lib/nix-modules/voidheart-desktop/configuration.nix"
           ];
         };
 
