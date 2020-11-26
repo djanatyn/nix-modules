@@ -138,7 +138,7 @@ in {
 
         script = ''
           export PATH=/run/current-system/sw/bin:$PATH
-          ln -s $(nix-build '<nixpkgs/nixos>' -A system) /var/lib/latest-ritual
+          ln -sfn $(nix-build '<nixpkgs/nixos>' -A system) /var/lib/latest-ritual
         '';
       };
     };
