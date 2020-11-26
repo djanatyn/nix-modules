@@ -360,6 +360,9 @@ with pkgs; {
 
     # keyboard is configured here
     # qmk_firmware
+
+    # music managements
+    beets
   ];
 
   hashicorp = [
