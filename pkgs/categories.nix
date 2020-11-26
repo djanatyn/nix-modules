@@ -74,6 +74,9 @@ with pkgs; {
 
     # searching
     manix
+
+    # caching
+    cachix
   ];
 
   secrets = [
