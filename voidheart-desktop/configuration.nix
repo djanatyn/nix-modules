@@ -201,7 +201,7 @@ in {
     };
 
     jackett = {
-      enable = true;
+      enable = false;
       package = pkgs.jackett;
     };
 
