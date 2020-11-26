@@ -127,8 +127,6 @@ in {
         serviceConfig = {
           Type = "oneshot";
           User = "root";
-          ExecStart =
-            "/run/current-system/sw/bin/nix-build '<nixpkgs/nixos>' -A system";
         };
 
         environment = {
@@ -137,6 +135,11 @@ in {
             "nixos-config=/var/lib/nix-modules/voidheart-desktop/configuration.nix"
           ];
         };
+
+        script = ''
+          export PATH=/run/current-system/sw/bin:$PATH
+          ln -s $(nix-build '<nixpkgs/nixos>' -A system) /var/lib/latest-ritual
+        '';
       };
     };
   };
