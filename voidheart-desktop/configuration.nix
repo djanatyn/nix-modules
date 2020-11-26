@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  checkout = "/home/djanatyn/repos/nix-modules";
+  checkout = "/var/lib/nix-modules";
 
   sources = import "${checkout}/nix/sources.nix" { };
   packages = import ./pkgs.nix { inherit config sources checkout; };
@@ -123,11 +123,15 @@ in {
     globalEnvironment = { RADV_PERFTEST = "aco"; };
 
     services = {
-      "ritual@" = {
-        serviceConfig = { Type = "oneshot"; };
+      "ritual" = {
+        serviceConfig = {
+          Type = "oneshot";
+          User = "root";
+          ExecStart =
+            "/run/current-system/sw/bin/nix-build '<nixpkgs/nixos>' -A system";
+        };
 
         environment = {
-          ACTION = "%i";
           NIX_PATH = builtins.concatStringsSep ":" [
             "nixpkgs=/var/lib/nixpkgs"
             "nixos-config=/var/lib/nix-modules/voidheart-desktop/configuration.nix"
