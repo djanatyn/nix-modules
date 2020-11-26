@@ -359,7 +359,7 @@ with pkgs; {
     podcast
 
     # keyboard is configured here
-    qmk_firmware
+    # qmk_firmware
   ];
 
   hashicorp = [
