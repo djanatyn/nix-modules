@@ -12,7 +12,6 @@ in with pkgs; {
     "${sources.nixpkgs}/nixos/modules/profiles/qemu-guest.nix"
     <modules/srht-ci>
     <modules/monitoring>
-    <modules/ritual>
     <modules/pri>
     (import "${sources.home-manager}/nixos")
   ];
@@ -23,7 +22,7 @@ in with pkgs; {
   # this system is managed by krops
   environment.variables.NIX_PATH = lib.mkForce "/var/src";
 
-  ritual.configPath = "vessel-vps/configuration.nix";
+  srht-ci.enable = true;
 
   # user account
   users = {
