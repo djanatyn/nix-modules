@@ -14,7 +14,7 @@ let
     # update to latest master
     cd /var/lib/nix-modules
     git pull --rebase origin master
-    git show
+    git --no-pager show
 
     nix-build '<nixpkgs/nixos>' -A system \
       -I nixpkgs=/var/lib/nixpkgs \
