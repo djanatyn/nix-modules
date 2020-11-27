@@ -13,7 +13,7 @@ in {
     ../cachix.nix
     <modules/pri>
     <modules/monitoring>
-    <modules/ritual>
+    <modules/srht-ci>
   ];
 
   # (don't update unless you know what you're doing)
@@ -23,8 +23,7 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "America/New_York";
 
-  # voidheart-specific user config
-  ritual.configPath = "voidheart-desktop/configuration.nix";
+  srht-ci.enable = false;
 
   users = {
     users = {

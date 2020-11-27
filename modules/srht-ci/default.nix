@@ -2,21 +2,43 @@
 
 let
   invocation = path:
-    "/run/current-system/sw/bin/ritual /var/lib/nix-modules/${path}";
+    "/run/current-system/sw/bin/ritual /var/lib/nix-modules/${path} *";
 
-  ritual = lib.writeScriptBin "ritual" ''
-    #!${super.stdenv.shell}
+  ritual = pkgs.writeScriptBin "ritual" ''
+    #!${pkgs.stdenv.shell}
+    set -x
+
+    CONFIG="$1"
+    OUTPUT="$2"
 
     nix-build '<nixpkgs/nixos>' -A system \
       -I nixpkgs=/var/lib/nixpkgs \
       -I modules=/var/lib/nix-modules/modules \
-      -I nixos-config="$@" \
+      -I nixos-config="$CONFIG" \
+      -o "$OUTPUT" \
       --show-trace | cachix push djanatyn
   '';
 
+  srht-ritual = pkgs.writeScriptBin "srht-ritual" ''
+    #!${pkgs.stdenv.shell}
+    set -x
+
+    mkdir -p /var/lib/ritual
+
+    sudo ritual \
+      vessel-vps/configuration.nix \
+      /var/lib/ritual/vessel
+
+    sudo ritual \
+      voidheart-desktop/configuration.nix \
+      /var/lib/ritual/desktop
+  '';
+
 in {
+  options.srht-ci.enable = lib.mkEnableOption "create service account";
+
   config = {
-    users.users.srht-ci = {
+    users.users.srht-ci = lib.mkIf config.srht-ci.enable {
       description = "srht user";
       shell = "/run/current-system/sw/bin/bash";
       createHome = false;
@@ -27,17 +49,17 @@ in {
       ];
     };
 
-    services.openssh.extraConfig = ''
+    services.openssh.extraConfig = lib.mkIf config.srht-ci.enable ''
       Match User srht-ci
         AllowAgentForwarding no
         AllowTcpForwarding no
         PermitTunnel no
         X11Forwarding no
-        ForceCommand sudo ${invocation "voidheart-desktop/configuration.nix"}
+        ForceCommand srht-ritual
       Match All
     '';
 
-    security.sudo.extraRules = [{
+    security.sudo.extraRules = lib.mkIf config.srht-ci.enable [{
       users = [ "srht-ci" ];
       commands = [
         {
@@ -51,6 +73,6 @@ in {
       ];
     }];
 
-    environment.systemPackages = [ ritual ];
+    environment.systemPackages = [ ritual srht-ritual ];
   };
 }
