@@ -7,7 +7,8 @@ let
       nix-build '<nixpkgs/nixos>' -A system \
         -I nixpkgs=/var/lib/nixpkgs \
         -I modules=/var/lib/nix-modules/modules \
-        -I nixos-config="$@" | cachix push djanatyn
+        -I nixos-config="$@" \
+        --show-trace | cachix push djanatyn
     '';
 in {
   macbook = self: super: { firefox = super.callPackage ./firefox { }; };

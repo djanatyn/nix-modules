@@ -22,7 +22,7 @@ in {
         AllowTcpForwarding no
         PermitTunnel no
         X11Forwarding no
-        ForceCommand sudo ${invocation}
+        ForceCommand sudo ${invocation "voidheart-desktop/configuration.nix"}
       Match All
     '';
 
