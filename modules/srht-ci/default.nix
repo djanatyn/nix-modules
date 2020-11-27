@@ -23,8 +23,6 @@ let
     #!${pkgs.stdenv.shell}
     set -x
 
-    mkdir -p /var/lib/ritual
-
     sudo ritual \
       vessel-vps/configuration.nix \
       /var/lib/ritual/vessel
