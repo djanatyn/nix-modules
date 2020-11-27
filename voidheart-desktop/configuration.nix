@@ -2,16 +2,16 @@
 let
   checkout = "/var/lib/nix-modules";
 
-  sources = import "${checkout}/nix/sources.nix" { };
+  sources = import ../nix/sources.nix;
   packages = import ./pkgs.nix { inherit config sources checkout; };
 
   inherit (packages) pkgs;
 in {
   imports = [
-    /etc/nixos/hardware-configuration.nix
     (import "${sources.home-manager}/nixos")
-    "${checkout}/modules/pri"
-    "${checkout}/modules/monitoring"
+    ./hardware-configuration.nix
+    <modules/pri>
+    <modules/monitoring>
   ];
 
   # (don't update unless you know what you're doing)
@@ -131,6 +131,7 @@ in {
 
         environment = {
           NIX_PATH = builtins.concatStringsSep ":" [
+            "modules=/var/lib/nix-modules/modules"
             "nixpkgs=/var/lib/nixpkgs"
             "nixos-config=/var/lib/nix-modules/voidheart-desktop/configuration.nix"
           ];
