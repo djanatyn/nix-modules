@@ -2,7 +2,7 @@
 
 let
   invocation = path:
-    "/run/current-system/sw/bin/ritual /var/lib/nix-modules/${path} *";
+    "/run/current-system/sw/bin/ritual /var/lib/nix-modules/${path}";
 
   ritual = pkgs.writeScriptBin "ritual" ''
     #!${pkgs.stdenv.shell}
@@ -24,11 +24,11 @@ let
     set -x
 
     sudo ritual \
-      vessel-vps/configuration.nix \
+      ${invocation "vessel-vps/configuration.nix"} \
       /var/lib/ritual/vessel
 
     sudo ritual \
-      voidheart-desktop/configuration.nix \
+      ${invocation "voidheart-desktop/configuration.nix"} \
       /var/lib/ritual/desktop
   '';
 
@@ -61,11 +61,11 @@ in {
       users = [ "srht-ci" ];
       commands = [
         {
-          command = (invocation "vessel-vps/configuration.nix");
+          command = ("${invocation "vessel-vps/configuration.nix"} *");
           options = [ "NOPASSWD" ];
         }
         {
-          command = (invocation "voidheart-desktop/configuration.nix");
+          command = ("${invocation "voidheart-desktop/configuration.nix"} *");
           options = [ "NOPASSWD" ];
         }
       ];
