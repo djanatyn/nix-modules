@@ -1,16 +1,4 @@
-{ sources }:
-let
-  ritual = super:
-    super.writeScriptBin "ritual" ''
-      #!${super.stdenv.shell}
-
-      nix-build '<nixpkgs/nixos>' -A system \
-        -I nixpkgs=/var/lib/nixpkgs \
-        -I modules=/var/lib/nix-modules/modules \
-        -I nixos-config="$@" \
-        --show-trace | cachix push djanatyn
-    '';
-in {
+{ sources }: {
   macbook = self: super: { firefox = super.callPackage ./firefox { }; };
 
   vessel = self: super: {
@@ -38,8 +26,6 @@ in {
         sha256 = "1bvcafpjxp7ddrbhm3z0xamgi71ymbi41dlx990daz0b5kbdir8y";
       };
     });
-
-    ritual = (ritual super);
   };
 
   voidheart = self: super:
@@ -66,8 +52,6 @@ in {
           sha256 = "1mqizih40d76mbywgsh2w9wg2hwhqx1p0039bqlq3108cx2nqkb9";
         };
       });
-
-      ritual = (ritual super);
 
       lutris = writeScriptBin "lutris" ''
         #!${stdenv.shell}

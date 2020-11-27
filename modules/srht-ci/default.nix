@@ -3,6 +3,17 @@
 let
   invocation = path:
     "/run/current-system/sw/bin/ritual /var/lib/nix-modules/${path}";
+
+  ritual = lib.writeScriptBin "ritual" ''
+    #!${super.stdenv.shell}
+
+    nix-build '<nixpkgs/nixos>' -A system \
+      -I nixpkgs=/var/lib/nixpkgs \
+      -I modules=/var/lib/nix-modules/modules \
+      -I nixos-config="$@" \
+      --show-trace | cachix push djanatyn
+  '';
+
 in {
   config = {
     users.users.srht-ci = {
@@ -39,5 +50,7 @@ in {
         }
       ];
     }];
+
+    environment.systemPackages = [ ritual ];
   };
 }
