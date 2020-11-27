@@ -1,7 +1,7 @@
 { config, ... }:
 let
-  sources = import ./nix/sources.nix;
-  overlay = import ./overlay.nix { inherit sources; };
+  sources = import ../nix/sources.nix;
+  overlay = import ../pkgs/overlay.nix { inherit sources; };
 
   pkgs = import sources.nixpkgs {
     overlays = [ overlay.vessel (import sources.nixpkgs-mozilla) ];
@@ -10,8 +10,9 @@ let
 in with pkgs; {
   imports = [
     "${sources.nixpkgs}/nixos/modules/profiles/qemu-guest.nix"
-    "${sources.nixpkgs}/nixos/modules/services/misc/sourcehut"
+    <modules/srht-ci>
     <modules/monitoring>
+    <modules/ritual>
     <modules/pri>
     (import "${sources.home-manager}/nixos")
   ];
@@ -21,6 +22,8 @@ in with pkgs; {
 
   # this system is managed by krops
   environment.variables.NIX_PATH = lib.mkForce "/var/src";
+
+  ritual.configPath = "vessel-vps/configuration.nix";
 
   # user account
   users = {
@@ -119,25 +122,6 @@ in with pkgs; {
       password = lib.fileContents /var/src/secrets/factorio/password;
     };
 
-    sourcehut = {
-      enable = true;
-      services = [ "meta" "git" "paste" ];
-      settings = {
-        webhooks = {
-          private-key =
-            lib.fileContents /var/src/secrets/sourcehut/webhooks/private-key;
-        };
-        "sr.ht" = {
-          secret-key = lib.fileContents /var/src/secrets/sourcehut/secret-key;
-          network-key = lib.fileContents /var/src/secrets/sourcehut/network-key;
-
-          owner-name = "Jonathan Strickland";
-          owner-email = "djanatyn@gmail.com";
-        };
-        "meta.sr.ht" = { origin = "http://vessel.voidheart.io"; };
-      };
-    };
-
     postgresql = {
       enable = true;
       package = postgresql_10;
@@ -181,6 +165,7 @@ in with pkgs; {
     zip
     unzip
     starship
+    cachix
   ];
 
   fileSystems = {

@@ -1,32 +1,45 @@
-{ sources }: {
+{ sources }:
+let
+  ritual = super:
+    super.writeScriptBin "ritual" ''
+      #!${super.stdenv.shell}
+
+      nix-build '<nixpkgs/nixos>' -A system \
+        -I nixpkgs=/var/lib/nixpkgs \
+        -I modules=/var/lib/nix-modules/modules \
+        -I nixos-config="$@" | cachix push djanatyn
+    '';
+in {
   macbook = self: super: { firefox = super.callPackage ./firefox { }; };
 
-  vessel = self: super:
-    with super; {
-      factorio = pkgs.factorio-headless-experimental.overrideAttrs
-        (oldAttrs: rec {
-          name = "factorio-${releaseType}-${version}";
-          version = "1.0.0";
-          releaseType = "headless";
-          arch = "linux64";
+  vessel = self: super: {
+    factorio = super.factorio-headless-experimental.overrideAttrs
+      (oldAttrs: rec {
+        name = "factorio-${releaseType}-${version}";
+        version = "1.0.0";
+        releaseType = "headless";
+        arch = "linux64";
 
-          src = pkgs.fetchurl {
-            name = "factorio-${releaseType}_${arch}-${version}.tar.xz";
-            url =
-              "https://www.factorio.com/get-download/${version}/${releaseType}/${arch}";
-            sha256 = "0r0lplns8nxna2viv8qyx9mp4cckdvx6k20w2g2fwnj3jjmf3nc1";
-          };
-        });
-      terraria-server = super.terraria-server.overrideAttrs (oldAttrs: rec {
-        version = "1.4.0.5";
-
-        src = pkgs.fetchurl {
+        src = super.fetchurl {
+          name = "factorio-${releaseType}_${arch}-${version}.tar.xz";
           url =
-            "https://terraria.org/system/dedicated_servers/archives/000/000/039/original/terraria-server-1405.zip";
-          sha256 = "1bvcafpjxp7ddrbhm3z0xamgi71ymbi41dlx990daz0b5kbdir8y";
+            "https://www.factorio.com/get-download/${version}/${releaseType}/${arch}";
+          sha256 = "0r0lplns8nxna2viv8qyx9mp4cckdvx6k20w2g2fwnj3jjmf3nc1";
         };
       });
-    };
+
+    terraria-server = super.terraria-server.overrideAttrs (oldAttrs: rec {
+      version = "1.4.0.5";
+
+      src = super.fetchurl {
+        url =
+          "https://terraria.org/system/dedicated_servers/archives/000/000/039/original/terraria-server-1405.zip";
+        sha256 = "1bvcafpjxp7ddrbhm3z0xamgi71ymbi41dlx990daz0b5kbdir8y";
+      };
+    });
+
+    ritual = (ritual super);
+  };
 
   voidheart = self: super:
     with super; {
@@ -53,19 +66,7 @@
         };
       });
 
-      ritual = writeScriptBin "ritual" ''
-        #!${stdenv.shell}
-        cat <<EOF
-        The lantern has been lit, and your summons heeded. A fine stage
-        you chose, this kingdom fallowed by worm and root, perfect earth upon
-        which our Ritual shall take place.
-
-        EOF
-
-        exec nixos-rebuild \
-          -I "nixos-config=''${HOME}/repos/nix-modules/voidheart-desktop/configuration.nix" \
-          "$@"
-      '';
+      ritual = (ritual super);
 
       lutris = writeScriptBin "lutris" ''
         #!${stdenv.shell}
@@ -92,5 +93,6 @@
             "$@"
         '';
       };
+
     };
 }
