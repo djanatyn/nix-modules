@@ -10,6 +10,7 @@ in {
   imports = [
     (import "${sources.home-manager}/nixos")
     ./hardware-configuration.nix
+    ../cachix.nix
     <modules/pri>
     <modules/monitoring>
     <modules/ritual>
