@@ -23,12 +23,10 @@ let
     #!${pkgs.stdenv.shell}
     set -x
 
-    sudo ritual \
-      ${invocation "vessel-vps/configuration.nix"} \
+    sudo ${invocation "vessel-vps/configuration.nix"} \
       /var/lib/ritual/vessel
 
-    sudo ritual \
-      ${invocation "voidheart-desktop/configuration.nix"} \
+    sudo ${invocation "voidheart-desktop/configuration.nix"} \
       /var/lib/ritual/desktop
   '';
 
