@@ -1,0 +1,10 @@
+---
+image: nixos/unstable
+tasks:
+  - build: |
+      ssh srht-ci@vessel.voidheart.io \
+        -p 8888 \
+        -i ~/.ssh/c8e9cc18-e3c7-48bb-8d1e-0aa33c179bfe \
+        -oStrictHostKeyChecking=no
+secrets:
+- c8e9cc18-e3c7-48bb-8d1e-0aa33c179bfe
