@@ -11,6 +11,11 @@ let
     CONFIG="$1"
     OUTPUT="$2"
 
+    # update to latest master
+    cd /var/lib/nix-modules
+    git pull --rebase origin master
+    git show
+
     nix-build '<nixpkgs/nixos>' -A system \
       -I nixpkgs=/var/lib/nixpkgs \
       -I modules=/var/lib/nix-modules/modules \
