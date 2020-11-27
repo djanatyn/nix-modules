@@ -1,10 +1,13 @@
 { config, lib, pkgs, ... }:
 
-let invocation = "ritual /var/lib/nix-modules/${ritual.configPath}";
+let
+  invocation = path:
+    "/run/current-system/sw/bin/ritual /var/lib/nix-modules/${path}";
 in {
   config = {
     users.users.srht-ci = {
       description = "srht user";
+      shell = "/run/current-system/sw/bin/bash";
       createHome = false;
       openssh.authorizedKeys.keys = [
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFQPTKrT397qtitl0hHkl3HysPfnpEm/WmO9f4dC4kLkrHIgs2t9Yvd6z+8C/hufW+e0cVug3sb6xHWFI78+/eCSRQpPWVsE3e6/U5R/EGJqylPLEa/SmB4hB6LpsCnJkeHnD/sVBz/EjFD29wifLFq0Y5keMdxbvUMjkGrep0CD1guYseFJOdFpLF3A5GAnnP2CHgvOT7/Pd2mym5f2Mxp17SF1iYAsx9xId5o6YbmKldz3BN51N+9CROSg9QWuSNCvA7qjflBIPtnBVZFvIN3U56OECZrv9ZY4dY2jrsUGvnGiyBkkdxw4+iR9g5kjx9jPnqZJGSEjWOYSl+2cEQGvvoSF8jPiH8yLEfC+CyFrb5FMbdXitiQz3r3Xy+oLhj8ULhnDdWZpRaJYTqhdS12R9RCoUQyP7tlyMawMxsiCUPH/wcaGInzpeSLZ5BSzVFhhMJ17TX+OpvIhWlmvpPuN0opmfaNGhVdBGFTNDfWt9jjs/OHm6RpVXacfeflP62xZQBUf3Hcat2JOqj182umjjZhBPDCJscfv52sdfkiqwWIc/GwdmKt5HqU+dX7lCFJ1OGF2ymnGEnkUwW+35qX8g2P+Vc4s28MmaO5M1R5UsMFnhtFbLdfLFKn2PEvepvIqyYFMziPzEBya4zBUch/9sd6UN3DV+rA/JB/rBApw== djanatyn@nixos"
@@ -25,7 +28,16 @@ in {
 
     security.sudo.extraRules = [{
       users = [ "srht-ci" ];
-      commands = [ invocation ];
+      commands = [
+        {
+          command = (invocation "vessel-vps/configuration.nix");
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = (invocation "voidheart-desktop/configuration.nix");
+          options = [ "NOPASSWD" ];
+        }
+      ];
     }];
   };
 }

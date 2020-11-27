@@ -166,6 +166,7 @@ in with pkgs; {
     unzip
     starship
     cachix
+    ritual
   ];
 
   fileSystems = {
