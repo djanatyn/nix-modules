@@ -12,6 +12,7 @@ in {
     ./hardware-configuration.nix
     <modules/pri>
     <modules/monitoring>
+    <modules/ritual>
   ];
 
   # (don't update unless you know what you're doing)
@@ -22,6 +23,8 @@ in {
   time.timeZone = "America/New_York";
 
   # voidheart-specific user config
+  ritual.configPath = "voidheart-desktop/configuration.nix";
+
   users = {
     users = {
       pripripripripri = {
@@ -121,28 +124,6 @@ in {
   systemd = {
     coredump.enable = true;
     globalEnvironment = { RADV_PERFTEST = "aco"; };
-
-    services = {
-      "ritual" = {
-        serviceConfig = {
-          Type = "oneshot";
-          User = "root";
-        };
-
-        environment = {
-          NIX_PATH = builtins.concatStringsSep ":" [
-            "modules=/var/lib/nix-modules/modules"
-            "nixpkgs=/var/lib/nixpkgs"
-            "nixos-config=/var/lib/nix-modules/voidheart-desktop/configuration.nix"
-          ];
-        };
-
-        script = ''
-          export PATH=/run/current-system/sw/bin:$PATH
-          ln -sfn $(nix-build '<nixpkgs/nixos>' -A system) /var/lib/latest-ritual
-        '';
-      };
-    };
   };
 
   networking = {
