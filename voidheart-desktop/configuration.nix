@@ -109,7 +109,7 @@ in {
 
     pulseaudio = {
       enable = true;
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
+      # extraModules = [ pkgs.pulseaudio-modules-bt ];
       package = pkgs.pulseaudioFull;
       support32Bit = true;
       configFile = pkgs.runCommand "default.pa" { } ''
