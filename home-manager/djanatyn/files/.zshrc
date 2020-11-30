@@ -95,9 +95,6 @@ export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA="USE_CURSES=1"
 gpg-ssh() { export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)" }
 
-# work
-# ====
-sshp() { SSH_AUTH_SOCK= SSHPASS="$(pass show current_password)" sshpass -e "$@" }
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/stricklanj/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/stricklanj/google-cloud-sdk/path.zsh.inc'; fi
@@ -114,3 +111,17 @@ if [[ -f ~/.p10k.zsh ]]; then
     source ~/.p10k.ssh.zsh
   fi
 fi
+
+# user functions
+# ==============
+
+function mksilicon() {
+  INPUT="$1"
+  OUTPUT="$2"
+  shift 2
+  silicon "$INPUT" --output "$OUTPUT" --no-line-number --no-window-controls "$@" && feh "$OUTPUT"
+}
+
+function sshp() {
+  SSH_AUTH_SOCK= SSHPASS="$(pass show current_password)" sshpass -e "$@"
+}
