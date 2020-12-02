@@ -18,7 +18,7 @@
  tmux upload
 
  :lang data emacs-lisp (haskell +dante) latex markdown nix raku
- (org +attach +babel +capture +export +present)
+ (org +noter +roam +pretty +dragndrop +pandoc) (racket +xp) rust
  python (sh +zsh)
 
  :email notmuch
