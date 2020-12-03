@@ -21,3 +21,4 @@
 (package! silicon :recipe
   (:host github
    :repo "iensu/silicon-el"))
+(package! org-ql)
