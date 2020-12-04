@@ -19,6 +19,14 @@
 (after! haskell
   (set-formatter! 'ormolu "ormolu" :modes '(haskell-mode)))
 
+(after! format
+  (setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            latex-mode
+            nix-mode)))
+
 (after! magit
   (magit-delta-mode +1))
 
