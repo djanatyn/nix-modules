@@ -8,7 +8,7 @@
 
 (after! org
   (setq org-agenda-files
-        '("~/repos/org")))
+        '("~/org-roam/")))
 
 (after! term
   (setq multi-term-program "/run/current-system/sw/bin/bash"))
