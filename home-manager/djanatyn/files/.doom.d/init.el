@@ -1,7 +1,7 @@
 (doom!
  :checkers (syntax-checker +childframe)
 
- :completion (company +auto) ivy
+ :completion (company +auto) (ivy +childframe +icons +fuzzy)
 
  :ui doom doom-dashboard doom-quit modeline ophints fill-column hl-todo
  nav-flash (popup +all +defaults) ligatures vc-gutter vi-tilde-fringe
