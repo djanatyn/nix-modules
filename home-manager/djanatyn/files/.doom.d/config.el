@@ -7,8 +7,7 @@
   (setq doom-font (font-spec :family "Hack" :size 12)))
 
 (after! org
-  (setq org-agenda-files
-        '("~/org-roam/")))
+  (setq org-agenda-files '("~/org-roam/" "~/org-roam/daily/")))
 
 (after! term
   (setq multi-term-program "/run/current-system/sw/bin/bash"))
