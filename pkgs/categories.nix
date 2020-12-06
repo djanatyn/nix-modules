@@ -391,6 +391,15 @@ with pkgs; {
     wakatime
   ];
 
+  python = [
+    # formatting
+    black
+
+    # dependencies
+    poetry
+  ];
+
+
   gameboy = [
     # assembly
     rgbds
