@@ -363,6 +363,9 @@ with pkgs; {
 
     # music managements
     beets
+
+    # backups
+    backblaze-b2
   ];
 
   hashicorp = [
