@@ -51,6 +51,7 @@ in {
       haskell
       java
       dhall
+      python
 
       # internet
       network
