@@ -34,9 +34,6 @@
 (use-package! symon
   :init (symon-mode))
 
-(use-package! dante
-  :init (setq dante-methods '(stack snack nix)))
-
 (use-package! elfeed
   :init (setq rmh-elfeed-org-files (list "~/.feeds.org")))
 
