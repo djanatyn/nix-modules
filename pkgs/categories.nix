@@ -211,6 +211,9 @@ with pkgs; {
     # contextual browsing!
     surf
 
+    # searching
+    ddgr
+
     # not everything works in firefox
     chromium
 
