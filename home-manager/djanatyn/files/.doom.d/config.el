@@ -56,3 +56,10 @@
 (defun gpg-ssh ()
   (interactive)
   (setenv "SSH_AUTH_SOCK" (string-trim (shell-command-to-string "gpgconf --list-dirs agent-ssh-socket"))))
+
+;; personal keybindings
+;; ====================
+;; i learned how to do this from https://rameezkhan.me/adding-keybindings-to-doom-emacs/
+(map! :leader
+  (:prefix-map ("c" . "code")
+    :desc "org-structure-template" "," 'org-insert-structure-template))
