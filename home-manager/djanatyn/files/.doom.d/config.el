@@ -20,11 +20,11 @@
 
 (after! format
   (setq +format-on-save-enabled-modes
-      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-            sql-mode         ; sqlformat is currently broken
-            tex-mode         ; latexindent is broken
-            latex-mode
-            nix-mode)))
+        '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+              sql-mode         ; sqlformat is currently broken
+              tex-mode         ; latexindent is broken
+              latex-mode
+              nix-mode)))
 
 (after! magit
   (magit-delta-mode +1))
@@ -61,5 +61,14 @@
 ;; ====================
 ;; i learned how to do this from https://rameezkhan.me/adding-keybindings-to-doom-emacs/
 (map! :leader
-  (:prefix-map ("c" . "code")
-    :desc "org-structure-template" "," 'org-insert-structure-template))
+      (:prefix-map ("c" . "code")
+       :desc "org-structure-template" "," 'org-insert-structure-template))
+
+;; fix terminal escape sequences
+(unless (display-graphic-p)
+  (progn
+    (define-key input-decode-map "\e[1;5C" [(control right)])
+    (define-key input-decode-map "\e[1;5D" [(control left)])
+    (define-key input-decode-map "\e[1;5A" [(control up)])
+    (define-key input-decode-map "\e[1;5B" [(control down)])
+    (define-key input-decode-map "\e[1;5F" [(meta left)])))
