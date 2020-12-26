@@ -22,3 +22,4 @@
   (:host github
    :repo "iensu/silicon-el"))
 (package! org-ql)
+(package! spdx)

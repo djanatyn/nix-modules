@@ -62,7 +62,8 @@
 ;; i learned how to do this from https://rameezkhan.me/adding-keybindings-to-doom-emacs/
 (map! :leader
       (:prefix-map ("c" . "code")
-       :desc "org-structure-template" "," 'org-insert-structure-template))
+       :desc "org-structure-template" "," 'org-insert-structure-template
+       :desc "license" "l" 'spdx-insert-spdx))
 
 ;; fix terminal escape sequences
 (unless (display-graphic-p)
