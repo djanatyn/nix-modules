@@ -23,3 +23,6 @@
    :repo "iensu/silicon-el"))
 (package! org-ql)
 (package! spdx)
+(use-package! snow
+  (:host github
+   :repo "alphapapa/snow.el"))
