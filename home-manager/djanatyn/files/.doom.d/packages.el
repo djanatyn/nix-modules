@@ -22,7 +22,9 @@
   (:host github
    :repo "iensu/silicon-el"))
 (package! org-ql)
-(package! spdx)
+(package! spdx :recipe
+  (:host github
+   :repo "condy0919/spdx.el"))
 (package! snow :recipe
   (:host github
    :repo "alphapapa/snow.el"))
