@@ -322,6 +322,12 @@ with pkgs; {
 
     # puzzles
     sgtpuzzles
+
+    # doom
+    gzdoom
+
+    # quake
+    quakespasm
   ];
 
   java = [
