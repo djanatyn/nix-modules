@@ -8,7 +8,8 @@
 
 (after! org
   (setq org-agenda-files '("~/org-roam/" "~/org-roam/daily/"))
-  (setq org-log-done t))
+  (setq org-log-done t)
+  (org-babel-lob-ingest "~/org-roam/library-of-babel.org"))
 
 (after! term
   (setq multi-term-program "/run/current-system/sw/bin/bash"))
