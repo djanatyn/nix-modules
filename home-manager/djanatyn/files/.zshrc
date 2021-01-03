@@ -25,8 +25,7 @@ fi
 
 # emacs
 # ======
-alias emacs='emacs -nw'
-export EDITOR='emacs -nw'
+export EDITOR='vim'
 
 # PATH
 # ====
