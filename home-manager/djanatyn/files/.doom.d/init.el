@@ -3,7 +3,7 @@
 
  :completion (company +auto) (ivy +childframe +icons +fuzzy)
 
- :ui doom doom-dashboard doom-quit modeline ophints fill-column hl-todo
+ :ui doom doom-dashboard doom-quit modeline ophints hl-todo
  nav-flash (popup +all +defaults) ligatures vc-gutter vi-tilde-fringe
  window-select treemacs hydra zen minimap workspaces
 
