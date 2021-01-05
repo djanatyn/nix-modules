@@ -285,8 +285,8 @@ with pkgs; {
     pre-commit
 
     # manage files outside of git
-    git-annex
-    git-annex-utils
+    # git-annex
+    # git-annex-utils
 
     # git large files
     git-lfs
@@ -397,8 +397,6 @@ with pkgs; {
   organization = [
     # task warrior + shell
     taskwarrior
-    tasksh
-    tasknc
 
     # timetracking
     wakatime

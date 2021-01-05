@@ -11,7 +11,7 @@ in {
       nix-daemon.enable = true;
 
       spacebar = {
-        enable = true;
+        enable = false;
         package = pkgs.spacebar;
         config = {
           position = "top";
@@ -40,7 +40,7 @@ in {
       };
 
       yabai = {
-        enable = true;
+        enable = false;
         package = pkgs.yabai;
         enableScriptingAddition = true;
 
