@@ -2,7 +2,8 @@
 let
   overlay = import "${checkout}/pkgs/overlay.nix" { inherit sources; };
 
-  pkgs = import sources.nixpkgs {
+  # pkgs = import sources.nixpkgs {
+  pkgs = import <nixpkgs> {
     overlays = [ overlay.voidheart (import sources.nixpkgs-mozilla) ];
     config = {
       allowUnfree = true;

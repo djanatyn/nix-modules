@@ -36,7 +36,7 @@
           libretro.parallel-n64
           libretro.fceumm
           libretro.snes9x
-          libretro.dolphin
+          # libretro.dolphin
           libretro.vba-m
           libretro.fbalpha2012
         ];

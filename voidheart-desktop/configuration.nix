@@ -75,7 +75,13 @@ in {
 
     kernelPackages = linuxPackages_latest;
     kernelModules = [ "kvm-amd" "kvm" ];
-    extraModulePackages = [ linuxPackages_latest.v4l2loopback ];
+
+    extraModulePackages = with linuxPackages_latest; [
+      v4l2loopback
+      gvusb2
+      gcadapter-oc-kmod
+    ];
+
     kernelParams = [
       "amdgpu.noretry=0"
       "amdgpu.gpu_recovery=1"
@@ -198,7 +204,7 @@ in {
     };
 
     dnsmasq = {
-      enable = true;
+      enable = false;
       servers = [ "8.8.8.8" ];
       extraConfig = ''
         strict-order

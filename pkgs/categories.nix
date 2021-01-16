@@ -272,7 +272,7 @@ with pkgs; {
     # typed programmable config
     dhall
     dhall-bash
-    dhall-json
+    # dhall-json
   ];
 
   git = with gitAndTools; [
@@ -365,7 +365,7 @@ with pkgs; {
 
   voidheart = [
     # podcasts stay here
-    podcast
+    # podcast
 
     # keyboard is configured here
     # qmk_firmware

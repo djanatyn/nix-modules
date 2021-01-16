@@ -15,15 +15,21 @@ in {
     services.prometheus.exporters.node.enable = true;
 
     # scrape node exporter
-    services.prometheus.scrapeConfigs = [{
-      job_name = "node_scraper";
-      static_configs = [{
-        targets = [
-          "${
-            toString config.services.prometheus.exporters.node.listenAddress
-          }:${toString config.services.prometheus.exporters.node.port}"
-        ];
-      }];
-    }];
+    services.prometheus.scrapeConfigs = [
+      {
+        job_name = "node_scraper";
+        static_configs = [{
+          targets = [
+            "${
+              toString config.services.prometheus.exporters.node.listenAddress
+            }:${toString config.services.prometheus.exporters.node.port}"
+          ];
+        }];
+      }
+      {
+        job_name = "wakatime";
+        static_configs = [{ targets = [ "0.0.0.0:9212" ]; }];
+      }
+    ];
   };
 }
