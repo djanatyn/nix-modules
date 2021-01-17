@@ -46,6 +46,7 @@ with pkgs; {
   study = [
     # track documents
     zotero
+    papis
   ];
 
   transform = [
