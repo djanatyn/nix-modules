@@ -133,7 +133,7 @@ in {
   };
 
   networking = {
-    resolvconf.useLocalResolver = true;
+    networkmanager.dns = "systemd-resolved";
     hostName = "voidheart";
 
     firewall = {
