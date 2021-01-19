@@ -9,6 +9,13 @@
 (after! org
   (setq org-agenda-files '("~/org-roam/" "~/org-roam/daily/"))
   (setq org-log-done t)
+  (setq org-roam-capture-templates
+        '("d" "default" plain (function org-roam--capture-get-point)
+          "%?"
+          :file-name "%<%Y%m%d%H%M%S>-${slug}"
+          :head "#+title: ${title}\n#+header-args: :results output"
+          :unnarrowed t))
+
   (org-babel-lob-ingest "~/org-roam/library-of-babel.org"))
 
 (after! term
