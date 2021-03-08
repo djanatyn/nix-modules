@@ -18,8 +18,8 @@
  tmux upload
 
  :lang (lsp +peek) data emacs-lisp (haskell +lsp) latex markdown nix raku
- (org +noter +roam +pretty +dragndrop +pandoc) (racket +xp) rust
- python (sh +zsh)
+ (org +noter +roam +pretty +dragndrop +pandoc) (racket +xp) rust rest json
+ perl python yaml cc (sh +zsh)
 
  :email notmuch
 
