@@ -397,9 +397,6 @@ with pkgs; {
   organization = [
     # task warrior + shell
     taskwarrior
-
-    # timetracking
-    wakatime
   ];
 
   python = [
