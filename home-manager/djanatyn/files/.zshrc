@@ -51,6 +51,7 @@ zplug 'romkatv/powerlevel10k', as:theme, depth:1
 zplug 'Aloxaf/fzf-tab', defer:2
 zplug 'zsh-users/zsh-autosuggestions', defer:3
 zplug 'zdharma/fast-syntax-highlighting', defer:3
+zplug 'bobsoppe/zsh-ssh-agent', use:ssh-agent.zsh, from:github
 
 if ! zplug check; then
     zplug install
