@@ -50,9 +50,6 @@
   :init (setenv "INSIDE_EMACS" (format "%s,comint" emacs-version))
   :config (pinentry-start))
 
-(use-package! wakatime-mode
-  :config (global-wakatime-mode))
-
 (use-package! org-roam
   :config (setq org-roam-directory "~/org-roam"))
 
