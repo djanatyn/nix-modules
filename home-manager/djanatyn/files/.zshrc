@@ -125,3 +125,8 @@ function mksilicon() {
 function sshp() {
   SSH_AUTH_SOCK= SSHPASS="$(pass show current_password)" sshpass -e "$@"
 }
+
+function ticket() {
+  NAME="$1"; shift;
+  jira login && jira create --saveFile="$1.yaml" -p DO -b "$@"
+}
