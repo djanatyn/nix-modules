@@ -7,7 +7,7 @@ let
   system = pkgs.stdenv.system;
   tmux = import ./tmux.nix;
   organize-rules = import ./organize.nix;
-  beets = import ./beets.nix;
+  # beets = import ./beets.nix;
 in {
   options.djanatyn = {
     username = mkOption {
@@ -34,7 +34,7 @@ in {
         ".zshrc".text = fileContents ./files/.zshrc;
         ".tmux.conf".text = fileContents ./files/.tmux.conf;
         ".doom.d".source = ./files/.doom.d;
-        ".config/beets/config.yaml".text = toYAML { } beets;
+        # ".config/beets/config.yaml".text = toYAML { } beets;
         ".config/organize/config.yaml".text = toYAML { } organize-rules;
         ".tmuxp/pivotal.yaml".text = toYAML { } tmux.pivotal;
         ".tmuxp/nix.yaml".text = toYAML { } tmux.nix;
