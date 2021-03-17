@@ -74,7 +74,7 @@ with pkgs; {
     niv
 
     # searching
-    manix
+    nix-doc
 
     # caching
     cachix
